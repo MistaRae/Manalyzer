@@ -6,9 +6,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table(name = "Deck")
@@ -67,7 +65,11 @@ public class Deck {
         return this.cards.size();
     }
 
-    public void addCardToDeck(Card card) {
+    public void addCard(Card card) {
         this.cards.add(card);
+    }
+
+    public void removeCard(Card card) {
+        this.cards.remove(card);
     }
 }

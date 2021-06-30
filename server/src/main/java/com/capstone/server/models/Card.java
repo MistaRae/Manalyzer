@@ -33,7 +33,7 @@ public abstract class Card {
     @Column(name = "cost")
     private int cost;
 
-    @Column(name = "oracle_text")
+    @Column(name = "oracle_text", length = 300)
     private String oracleText;
 
     public Card(String name, String colour, int cost, String oracleText) {
