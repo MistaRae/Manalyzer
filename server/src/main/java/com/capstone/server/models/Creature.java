@@ -1,0 +1,55 @@
+package com.capstone.server.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+
+@Entity
+public class Creature extends Card {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "power")
+    private int power;
+
+    @Column(name = "toughness")
+    private int toughness;
+
+    public Creature(Deck deck, String name, String colour,int cost, String oracleText, int power, int toughness) {
+        super(deck, name, colour, cost, oracleText);
+        this.power = power;
+        this.toughness = toughness;
+    }
+
+    public Creature() {
+        super();
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getToughness() {
+        return toughness;
+    }
+
+    public void setToughness(int toughness) {
+        this.toughness = toughness;
+    }
+}
