@@ -1,17 +1,15 @@
 package com.capstone.server.controllers;
 
-import com.capstone.server.models.Deck;
 import com.capstone.server.models.Enchantment;
 import com.capstone.server.repositories.EnchantmentRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Component
+@RestController
 public class EnchantmentController {
 
     @Autowired

@@ -21,7 +21,7 @@ public class LandController {
         return new ResponseEntity<>(landRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/land/{id}")
+    @GetMapping(value = "/lands/{id}")
     public ResponseEntity getLand(@PathVariable Long id){
         return new ResponseEntity<>(landRepository.findById(id), HttpStatus.OK);
     }

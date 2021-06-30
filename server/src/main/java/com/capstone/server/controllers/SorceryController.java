@@ -1,18 +1,15 @@
 package com.capstone.server.controllers;
 
-import com.capstone.server.models.Card;
 import com.capstone.server.models.Sorcery;
 import com.capstone.server.repositories.SorceryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Component
-public class SorceryController {
+@RestController class SorceryController {
 
     @Autowired
     SorceryRepository sorceryRepository;
