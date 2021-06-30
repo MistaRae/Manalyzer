@@ -1,8 +1,10 @@
 package com.capstone.server.models;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "aretefacts")
 public class Artefact  extends Card {
 
     public Artefact(Deck deck, String name, String colour, int cost, String oracleText) {
@@ -11,4 +13,7 @@ public class Artefact  extends Card {
 
     public Artefact() {
     }
+
+
+
 }
