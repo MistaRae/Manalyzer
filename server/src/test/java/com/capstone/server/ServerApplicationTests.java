@@ -61,5 +61,7 @@ class ServerApplicationTests {
 		assertEquals(3, deck1.getCardCount());
 	}
 
+	@Test
+	void canAddEnchantmentToDeck
 
 }
