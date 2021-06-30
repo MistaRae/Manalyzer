@@ -15,8 +15,8 @@ public class Creature extends Card {
     @Column(name = "toughness")
     private int toughness;
 
-    public Creature(Deck deck, String name, String colour,int cost, String oracleText, int power, int toughness) {
-        super(deck, name, colour, cost, oracleText);
+    public Creature( String name, String colour,int cost, String oracleText, int power, int toughness) {
+        super(name, colour, cost, oracleText);
         this.power = power;
         this.toughness = toughness;
     }

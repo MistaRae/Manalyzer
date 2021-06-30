@@ -33,7 +33,7 @@ public class DataLoader implements ApplicationRunner {
         Deck deck1 = new Deck("test deck");
         deckRepository.save(deck1);
 
-        Instant darkRitual = new Instant(deck1,"Dark Ritual", "Black", 1, "TAP, add 3 Black Mana to your Mana Pool");
+        Instant darkRitual = new Instant("Dark Ritual", "Black", 1, "TAP, add 3 Black Mana to your Mana Pool");
         instantRepository.save(darkRitual);
 
 

@@ -2,6 +2,7 @@ package com.capstone.server.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,7 +19,13 @@ public class Deck {
     private Long id;
 
     @JsonIgnoreProperties(value = "deck")
-    @OneToMany(mappedBy = "deck", fetch = FetchType.LAZY)
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "decks_cards",
+            joinColumns = {@JoinColumn(name = "deck_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name ="card_id", nullable = false, updatable = false)}
+    )
     private List<Card> cards;
 
     @Column(name = "name")

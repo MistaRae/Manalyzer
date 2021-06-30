@@ -7,8 +7,8 @@ import javax.persistence.Table;
 @Table(name = "aretefacts")
 public class Artefact  extends Card {
 
-    public Artefact(Deck deck, String name, String colour, int cost, String oracleText) {
-        super(deck, name, colour, cost, oracleText);
+    public Artefact(String name, String colour, int cost, String oracleText) {
+        super(name, colour, cost, oracleText);
     }
 
     public Artefact() {
