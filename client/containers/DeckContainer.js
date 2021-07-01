@@ -7,7 +7,7 @@ const DeckContainer = () => {
 
     return (
         <SafeAreaView>
-            
+            <Text>Deck info goes here </Text>
         </SafeAreaView>
     )
 

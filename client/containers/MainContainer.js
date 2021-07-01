@@ -1,10 +1,12 @@
 import React, {useState, useEffect}from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 import LogInContainer from './LogInContainer';
 
 
 const MainContainer = () => {
 
+  
 
     return(
         <View style={styles.container}>

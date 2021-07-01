@@ -8,7 +8,7 @@ const LogIn = () => {
     <View>
         <TextInput placeholder="Email"/>
         <TextInput placeholder="Password"/>
-        <Button onPress={() => Alert.alert("leads to deckContainer + components")}
+        <Button onPress={() => Alert.alert("leads to ALL DECKS")}
         title = "Log In"
         color="black"/>
     </View>
