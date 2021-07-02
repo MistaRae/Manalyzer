@@ -1,13 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from '@react-navigation/stack';
-import MainContainer from './containers/MainContainer';
-import DeckContainer from './containers/DeckContainer';
-import AllDecksContainer from './containers/AllDecksContainer'
-import Request from './helpers/request'
-
+import HomeScreen from './Screens/HomeScreen';
+import DeckScreen from './Screens/DeckScreen';
+import AllDecksScreen from './Screens/AllDecksScreen'
+// import Request from './helpers/request'
+// import Navigator from './routes/HomeStack'
 
 
 const Stack = createStackNavigator();
@@ -16,17 +16,16 @@ export default function App() {
 
 
 
-
-  return (
+ 
+  return (    
 
     <NavigationContainer>
-      <Stack.Navigator>
-        {/* <Stack.Screen name = "Home" component ={MainContainer} /> */}
-        <Stack.Screen name = "all_decks" component = {AllDecksContainer} /> 
-        {/* <Stack.Screen name = "Specific_Deck" component = {DeckContainer} /> */}
+      <Stack.Navigator initialRouteName= "Home">
+        <Stack.Screen name = "Home" component ={HomeScreen} options={{title: "home"}} />
+        <Stack.Screen name = "AllDecks" component = {AllDecksScreen} options={{title: "All Decks"}}/> 
+        <Stack.Screen name = "SpecificDeck" component = {DeckScreen} options={{title: "specific deck"}}/>
       </Stack.Navigator>
     </NavigationContainer>
-
 
   );
 }

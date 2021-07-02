@@ -1,16 +1,17 @@
 import React, {useState, useEffect}from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import LogInContainer from './LogInContainer';
+import LogInScreen from './LogInScreen';
+import LogIn from '../components/app_utility/LogIn';
 
 
-const MainContainer = () => {
 
-  
+const HomeScreen = ({navigation}) => {
+
+
 
     return(
         <View style={styles.container}>
-            <LogInContainer style={styles.container}/>
+            <LogIn style={styles.container} navigation={navigation} />
         </View>
     )
 }
@@ -24,4 +25,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default MainContainer;
+export default HomeScreen;

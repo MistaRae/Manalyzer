@@ -37,11 +37,11 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader(){
 
     }
-
-
+    
     @Override
     public void run(ApplicationArguments args) {
         Deck deck1 = new Deck("test deck");
+        Deck deck2 = new Deck("test deck 2");
         Land swamp = new Land("Swamp", "colorless", 0, "{T}, add 1 black mana");
         deck1.addCard(swamp);
         deck1.addCard(swamp);
@@ -130,6 +130,68 @@ public class DataLoader implements ApplicationRunner {
         deck1.addCard(witchsOven);
         artefactRepository.save(witchsOven);
         deckRepository.save(deck1);
+
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(swamp);
+        deck2.addCard(darkRitual);
+        deck2.addCard(darkRitual);
+        deck2.addCard(darkRitual);
+        deck2.addCard(darkRitual);
+        deck2.addCard(unholyStrength);
+        deck2.addCard(unholyStrength);
+        deck2.addCard(unholyStrength);
+        deck2.addCard(unholyStrength);
+        deck2.addCard(blackKnight);
+        deck2.addCard(blackKnight);
+        deck2.addCard(blackKnight);
+        deck2.addCard(blackKnight);
+        deck2.addCard(ritualOfSoot);
+        deck2.addCard(ritualOfSoot);
+        deck2.addCard(ritualOfSoot);
+        deck2.addCard(ritualOfSoot);
+        deck2.addCard(ayara);
+        deck2.addCard(ayara);
+        deck2.addCard(ayara);
+        deck2.addCard(ayara);
+        deck2.addCard(lurrus);
+        deck2.addCard(lurrus);
+        deck2.addCard(lurrus);
+        deck2.addCard(lurrus);
+        deck2.addCard(cauldronFamiliar);
+        deck2.addCard(cauldronFamiliar);
+        deck2.addCard(cauldronFamiliar);
+        deck2.addCard(cauldronFamiliar);
+        deck2.addCard(bloodthirstyAerialist);
+        deck2.addCard(bloodthirstyAerialist);
+        deck2.addCard(bloodthirstyAerialist);
+        deck2.addCard(bloodthirstyAerialist);
+        deck2.addCard(terror);
+        deck2.addCard(terror);
+        deck2.addCard(terror);
+        deck2.addCard(terror);
+        deck2.addCard(witchsOven);
+        deck2.addCard(witchsOven);
+        deck2.addCard(witchsOven);
+        deck2.addCard(witchsOven);
+        deckRepository.save(deck2);
 
     }
 }
