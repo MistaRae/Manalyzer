@@ -6,8 +6,7 @@ const DeckScreen = () => {
     const [decks, setDecks] = useState("decks go here");
 
     return (
-        <SafeAreaView>
-        </SafeAreaView>
+ <View></View>
     )
 
 }

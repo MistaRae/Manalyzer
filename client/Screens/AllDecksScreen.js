@@ -19,16 +19,12 @@ const AllDecksScreen = () => {
     },[])
 
     const deckNodes = decks.map((deck) => {
-        return  <DeckSnapshot key={deck.id}>
-                    <SafeAreaView style = {styles.container}>
-                        <Text style = {styles.h1}>
-                            name: {deck.name}
-                        </Text>
-                        <Text style = {styles.h2}> 
-                            total cards: {deck.cardCount}
-                        </Text>
-                    </SafeAreaView>
-                </DeckSnapshot>
+        console.log(deck.id)
+        return ( 
+
+            <DeckSnapshot key ={deck.id} deck={deck}/>
+
+        )
     });
 
  
@@ -44,13 +40,13 @@ const AllDecksScreen = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+    //   backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
     },
     h1: {
         flex: 1,
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'flex-start',
         fontSize: 30,
@@ -68,3 +64,14 @@ const styles = StyleSheet.create({
 
 
 export default AllDecksScreen;
+
+// <DeckSnapshot key={deck.id}>
+// <SafeAreaView style = {styles.container}>
+//     <Text style = {styles.h1}>
+//         name: {deck.name}
+//     </Text>
+//     <Text style = {styles.h2}> 
+//         total cards: {deck.cardCount}
+//     </Text>
+// </SafeAreaView>
+// </DeckSnapshot>
