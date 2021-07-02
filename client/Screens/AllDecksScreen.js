@@ -2,7 +2,7 @@ import React, {useState, useEffect}from 'react';
 import { StyleSheet, Text, SafeAreaView, View } from 'react-native';
 import DeckSnapshot from '../components/all_decks/DeckSnapshot';
 
-const AllDecksScreen = () => {
+const AllDecksScreen = ({navigation}) => {
 
     const [decks, setDecks] = useState([]);
 
@@ -19,10 +19,9 @@ const AllDecksScreen = () => {
     },[])
 
     const deckNodes = decks.map((deck) => {
-        console.log(deck.id)
         return ( 
 
-            <DeckSnapshot key ={deck.id} deck={deck}/>
+            <DeckSnapshot key ={deck.id} deck={deck} navigation={navigation}/>
 
         )
     });

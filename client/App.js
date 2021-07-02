@@ -23,7 +23,7 @@ export default function App() {
       <Stack.Navigator initialRouteName= "Home">
         <Stack.Screen name = "Home" component ={HomeScreen} options={{title: "home"}} />
         <Stack.Screen name = "AllDecks" component = {AllDecksScreen} options={{title: "All Decks"}}/> 
-        <Stack.Screen name = "SpecificDeck" component = {DeckScreen} options={{title: "specific deck"}}/>
+        <Stack.Screen name = "SpecificDeck" component = {DeckScreen} options={{title: "Deck Info"}}/>
       </Stack.Navigator>
     </NavigationContainer>
 
