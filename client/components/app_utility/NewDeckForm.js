@@ -1,20 +1,35 @@
 import React, {useState, useEffect}from 'react';
-import { ScrollView, StyleSheet, Text, SafeAreaView, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, SafeAreaView, View, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import Request from '../../helpers/request';
 
-const NewDeckForm = ({setNewDeck}) => {
+const NewDeckForm = () => {
 
+    const [newDeck,setNewDeck] = useState({
+        name:""
+    })
 
+    const url = "http://192.168.1.166:8080/decks/"
+
+    const createNewDeck = () => {
+        const request = new Request(); 
+        request.post(url,newDeck)
+    }
 
     return(
 
-        <SafeAreaView >
+        <SafeAreaView style={styles.container}>
             <TextInput
             style = {styles.search_field}
-            onChangeText = {(text) => setNewDeck(text)}
+            onChangeText = {(text) => setNewDeck({...newDeck, name: text})}
             placeholder = "Enter deck name..."/>    
-        </SafeAreaView>
+            <Button
+            title = "add deck"
+            style = {styles.Button}
+            onPress = {createNewDeck}
 
+            />
+        </SafeAreaView>
 
     )
 }
@@ -34,7 +49,7 @@ const styles = StyleSheet.create({
     search_field: {
         borderColor: "black",
         borderWidth: 2,
-        flex: 1,
+        flex: .1,
         padding: 10,
         height: 50,
         margin: 5

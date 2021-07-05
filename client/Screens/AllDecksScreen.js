@@ -7,9 +7,7 @@ import NewDeckForm from '../components/app_utility/NewDeckForm'
 const AllDecksScreen = ({navigation}) => {
 
     const [decks, setDecks] = useState([]);
-    const [newDeck,setNewDeck] = useState({
-        name:""
-    })
+  
 
     const baseURL = 'http://192.168.1.166:8080/decks';
 
