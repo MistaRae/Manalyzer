@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -77,14 +75,14 @@ public class ServerApplicationTests {
 	@Test
 	public void canAddInstantToDeck(){
 		deck1.addCard(darkRitual);
-		assertEquals(1, deck1.getCardCount());
+		assertEquals(1, deck1.cardCount());
 	}
 
 	@Test
 	public void canAddCreatureToDeck(){
 		deck1.addCard(darkRitual);
 		deck1.addCard(ragingGoblin);
-		assertEquals(2, deck1.getCardCount());
+		assertEquals(2, deck1.cardCount());
 	}
 
 	@Test
@@ -92,7 +90,7 @@ public class ServerApplicationTests {
 		deck1.addCard(darkRitual);
 		deck1.addCard(ragingGoblin);
 		deck1.addCard(serumVisions);
-		assertEquals(3, deck1.getCardCount());
+		assertEquals(3, deck1.cardCount());
 	}
 
 	@Test
@@ -101,7 +99,7 @@ public class ServerApplicationTests {
 		deck1.addCard(ragingGoblin);
 		deck1.addCard(serumVisions);
 		deck1.addCard(dayOfTheDragons);
-		assertEquals(4, deck1.getCardCount());
+		assertEquals(4, deck1.cardCount());
 	}
 
 	@Test
@@ -112,7 +110,7 @@ public class ServerApplicationTests {
 		deck1.addCard(serumVisions);
 		deck1.addCard(dayOfTheDragons);
 		deck1.addCard(krakensEye);
-		assertEquals(5, deck1.getCardCount());
+		assertEquals(5, deck1.cardCount());
 	}
 	@Test
 	public void canAddLandToDeck(){
@@ -122,7 +120,7 @@ public class ServerApplicationTests {
 		deck1.addCard(dayOfTheDragons);
 		deck1.addCard(krakensEye);
 		deck1.addCard(island);
-		assertEquals(6, deck1.getCardCount());
+		assertEquals(6, deck1.cardCount());
 	}
 
 	@Test
@@ -134,7 +132,7 @@ public class ServerApplicationTests {
 		deck1.addCard(krakensEye);
 		deck1.addCard(island);
 		deck1.removeCard(island);
-		assertEquals(5, deck1.getCardCount());
+		assertEquals(5, deck1.cardCount());
 	}
 
 }

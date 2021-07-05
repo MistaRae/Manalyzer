@@ -61,7 +61,7 @@ public class Deck {
         this.name = name;
     }
 
-    public int getCardCount() {
+    public int cardCount() {
         return this.cards.size();
     }
 

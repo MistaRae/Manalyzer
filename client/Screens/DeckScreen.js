@@ -8,7 +8,8 @@ const DeckScreen = ({route, navigation}) => {
     const [currentDeck,setCurrentDeck] = useState(null);
     const [cardData,setCardData] = useState(null);
     // const [deckImageURL, setDeckImageURL] = useState('https://c1.scryfall.com/file/scryfall-cards/border_crop/front/1/2/12ab9836-bc90-4d92-a86d-b8e1b7671aa7.jpg?1562898915');
-
+    console.log("current deck:", currentDeck)
+    console.log("Deck id:", deck_id)
 
     const baseURL = 'http://192.168.1.166:8080/decks/';
 
@@ -33,9 +34,9 @@ const DeckScreen = ({route, navigation}) => {
         },[])
         const newDeckList = reducedList.map(card => {
         return (
-            <Pressable>
+            <Pressable key={card.id}>
          
-            <Text key = {card.id}> {card.name} x {card.quantity}</Text>
+            <Text> {card.name} x {card.quantity}</Text>
             </Pressable>
         )
     }

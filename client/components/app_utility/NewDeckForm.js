@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text, SafeAreaView, View, Button } from 'react-
 import { TextInput } from 'react-native-gesture-handler';
 import Request from '../../helpers/request';
 
-const NewDeckForm = () => {
+const NewDeckForm = ({navigation: { navigate }}) => {
 
     const [newDeck,setNewDeck] = useState({
         name:""
@@ -14,6 +14,9 @@ const NewDeckForm = () => {
     const createNewDeck = () => {
         const request = new Request(); 
         request.post(url,newDeck)
+        .then(data => {setNewDeck(data)
+            navigate('SpecificDeck', {deck_id: data.id});
+        })
     }
 
     return(
