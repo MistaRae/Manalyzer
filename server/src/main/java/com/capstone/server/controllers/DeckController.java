@@ -1,6 +1,8 @@
 package com.capstone.server.controllers;
 
+import com.capstone.server.models.Card;
 import com.capstone.server.models.Deck;
+import com.capstone.server.repositories.CardRepository;
 import com.capstone.server.repositories.DeckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,9 @@ import java.util.List;
 
 @RestController
 public class DeckController {
+
+    @Autowired
+    CardRepository cardRepository;
 
     @Autowired
     DeckRepository deckRepository;
@@ -27,6 +32,15 @@ public class DeckController {
 
     @PostMapping(value = "/decks")
     public ResponseEntity<Deck> saveDeck(@RequestBody Deck deck){
+        deckRepository.save(deck);
+        return new ResponseEntity<>(deck, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/decks/{id}/add-card")
+    public ResponseEntity<Deck> addCardToDeck(@RequestBody Card card, @PathVariable Long id){
+        Deck deck = deckRepository.getById(id);
+        cardRepository.save(card);
+        deck.addCard(card);
         deckRepository.save(deck);
         return new ResponseEntity<>(deck, HttpStatus.CREATED);
     }

@@ -1,15 +1,15 @@
 import React, {useState, useEffect}from 'react';
-import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable } from 'react-native';
+import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable, Button } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 
-const DeckScreen = ({route, navigation}) => {
+const DeckScreen = ({route, navigation: {navigate}}) => {
 
     const {deck_id} = route.params;
 
     const [currentDeck,setCurrentDeck] = useState(null);
     const [cardData,setCardData] = useState(null);
     // const [deckImageURL, setDeckImageURL] = useState('https://c1.scryfall.com/file/scryfall-cards/border_crop/front/1/2/12ab9836-bc90-4d92-a86d-b8e1b7671aa7.jpg?1562898915');
-    console.log("current deck:", currentDeck)
-    console.log("Deck id:", deck_id)
+
 
     const baseURL = 'http://192.168.1.166:8080/decks/';
 
@@ -38,6 +38,7 @@ const DeckScreen = ({route, navigation}) => {
          
             <Text> {card.name} x {card.quantity}</Text>
             </Pressable>
+            
         )
     }
     )
@@ -57,7 +58,12 @@ const DeckScreen = ({route, navigation}) => {
             
           {newDeckList}
            
+           <Button
+           style = {styles.button}
+           onPress = {() => {navigate("CardSearch", {deck_id: currentDeck.id})}}
+           title= "add cards to deck"
            
+           />
         
         </SafeAreaView>
 

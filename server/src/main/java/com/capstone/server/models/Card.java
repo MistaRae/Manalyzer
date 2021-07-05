@@ -20,7 +20,7 @@ public abstract class Card {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             joinColumns = {@JoinColumn(name = "card_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name ="deck_id", nullable = false, updatable = false)}
+            inverseJoinColumns = {@JoinColumn(name = "deck_id", nullable = false, updatable = false)}
     )
     private List<Deck> decks;
 

@@ -1,11 +1,13 @@
 import React, {useState, useEffect}from 'react';
 import { Image, Alert, Text,TextInput, Button, View, SafeAreaView, StyleSheet, Pressable } from 'react-native';
 
-const AddCardToDeckScreen = () => {
+const AddCardToDeckScreen = ({route}) => {
 
     const [currentCard, setCurrentCard] = useState({});
     const [searchString,setSearchString] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
+
+    const {deck_id} = route.params;
 
 
     useEffect(() => {
@@ -47,9 +49,9 @@ const AddCardToDeckScreen = () => {
             }
             <Button
             style = {styles.button}
-            title = "ADD CARD TO DECK"
+            title = {`${deck_id}`}
             color = "black"
-            // onPress = {() => {}}
+            onPress = {() => {}}
             />
         </SafeAreaView>
     )
