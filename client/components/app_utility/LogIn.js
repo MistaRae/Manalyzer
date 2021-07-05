@@ -9,7 +9,9 @@ const LogIn = ({ navigation: { navigate } }) => {
 
     <View>
         <TextInput placeholder="Email"/>
-        <TextInput placeholder="Password"/>
+        <TextInput 
+        secureTextEntry={true}
+        placeholder="Password"/>
         <Button onPress={() => navigate('AllDecks')}
         title = "Log In"
         color="black"/>

@@ -13,7 +13,7 @@ const DeckScreen = ({route, navigation}) => {
     // console.log(topCard)
 
     const [currentDeck,setCurrentDeck] = useState([]);
-    const [cardData,SetCardData] = useState(null);
+    const [cardData,setCardData] = useState(null);
     const [deckImageURL, setDeckImageURL] = useState('https://c1.scryfall.com/file/scryfall-cards/border_crop/front/1/2/12ab9836-bc90-4d92-a86d-b8e1b7671aa7.jpg?1562898915');
 
 
@@ -33,22 +33,27 @@ const DeckScreen = ({route, navigation}) => {
     //     .then(data => setCardData(data))
     // }
 
+    // 
+
     // const getDeckImageURL = () => {
-    //     return fetch()
+    //     fetch(randomCardURL)
     //     .then(res => res.json())
-    //     .then(data => JSON.stringify(data))
-    //     .then(url => setDeckImageURL(url))
+    //     .then(data => setCardData(data))
+        
+    //     const newURL = cardData.image_uris.small
+    //     newURL ? setDeckImageURL(newURL) : console.log("null")       
     // }
 
     useEffect(() => {
         getCurrentDeck()
         // getDeckImageURL()
+        
     },[])
 
 
     return (
 
-        <SafeAreaView>
+        <SafeAreaView style = {styles.container}>
             <Text>
             DECK NAME: {currentDeck.name}
             </Text>
@@ -58,12 +63,12 @@ const DeckScreen = ({route, navigation}) => {
             <Text>
                 DECK LIST: 
             </Text>
-            <Image 
+            {deckImageURL ? <Image 
                 style={styles.card}
-                source = {{uri: deckImageURL}}
-            
-            /> 
-                
+                source = {{uri: deckImageURL}} 
+                      
+            /> : <Text>image not loading </Text>
+        } 
         </SafeAreaView>
 
         )
@@ -72,12 +77,17 @@ const DeckScreen = ({route, navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         paddingTop: 10,
+        marginLeft: 20,
     },
     card: {
         backgroundColor: "black",
-        width: 388,
-        height: 550,
+        resizeMode: "contain",
+        width: "30%",
+        height: "20%",
+        // width: 388,
+        // height: 550,
     }
 })
 

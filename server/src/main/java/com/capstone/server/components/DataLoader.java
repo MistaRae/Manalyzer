@@ -42,6 +42,14 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         Deck deck1 = new Deck("test deck");
         Deck deck2 = new Deck("test deck 2");
+        Deck deck3 = new Deck("third deck");
+        Deck deck4 = new Deck("deck 4");
+        Deck deck5 = new Deck("another deck");
+        Deck deck6 = new Deck("aaaand another deck");
+        Deck deck7 = new Deck("testing...");
+        Deck deck8 = new Deck("testing...1");
+        Deck deck9 = new Deck("testing...2");
+        Deck deck10 = new Deck("testing...3");
         Land swamp = new Land("Swamp", "colorless", 0, "{T}, add 1 black mana");
         deck1.addCard(swamp);
         deck1.addCard(swamp);
@@ -192,6 +200,99 @@ public class DataLoader implements ApplicationRunner {
         deck2.addCard(witchsOven);
         deck2.addCard(witchsOven);
         deckRepository.save(deck2);
+
+
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deck3.addCard(swamp);
+        deckRepository.save(deck3);
+
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deck4.addCard(swamp);
+        deckRepository.save(deck4);
+
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deck5.addCard(swamp);
+        deckRepository.save(deck5);
+
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deck6.addCard(swamp);
+        deckRepository.save(deck6);
+        deckRepository.save(deck7);
+        deckRepository.save(deck8);
+        deckRepository.save(deck9);
+        deckRepository.save(deck10);
 
     }
 }

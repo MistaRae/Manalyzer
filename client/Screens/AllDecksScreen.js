@@ -1,6 +1,7 @@
 import React, {useState, useEffect}from 'react';
-import { StyleSheet, Text, SafeAreaView, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, SafeAreaView, View } from 'react-native';
 import DeckSnapshot from '../components/all_decks/DeckSnapshot';
+import MenuBar from '../components/app_utility/MenuBar';
 
 const AllDecksScreen = ({navigation}) => {
 
@@ -20,28 +21,30 @@ const AllDecksScreen = ({navigation}) => {
 
     const deckNodes = decks.map((deck) => {
         return ( 
-
             <DeckSnapshot key ={deck.id} deck={deck} navigation={navigation}/>
-
         )
     });
 
  
     return(
         
-        <View>
+        <SafeAreaView style = {styles.container}>
+            <MenuBar navigation = {navigation}/>
+            <ScrollView>
           {deckNodes}
-        </View>
+          </ScrollView>
+        </SafeAreaView>
     )
 
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-    //   backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+        marginLeft: 20,
+        flex: 1,
+        // backgroundColor: '#fff',
+        // alignItems: 'center',
+        // justifyContent: 'center',
     },
     h1: {
         flex: 1,
@@ -59,18 +62,5 @@ const styles = StyleSheet.create({
     }
 });
 
-
-
-
 export default AllDecksScreen;
 
-// <DeckSnapshot key={deck.id}>
-// <SafeAreaView style = {styles.container}>
-//     <Text style = {styles.h1}>
-//         name: {deck.name}
-//     </Text>
-//     <Text style = {styles.h2}> 
-//         total cards: {deck.cardCount}
-//     </Text>
-// </SafeAreaView>
-// </DeckSnapshot>
