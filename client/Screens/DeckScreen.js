@@ -1,8 +1,12 @@
 import React, {useState, useEffect}from 'react';
 import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable, Button } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
+import { useIsFocused } from '@react-navigation/native'
+
 
 const DeckScreen = ({route, navigation: {navigate}}) => {
+
+    const isFocused = useIsFocused()
 
     const {deck_id} = route.params;
 
@@ -21,7 +25,7 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
 
     useEffect(() => {
         getCurrentDeck()        
-    },[])
+    },[isFocused])
 
     if (!currentDeck) {return (
         <Text>loading...</Text>)}

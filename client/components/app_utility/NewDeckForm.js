@@ -14,7 +14,8 @@ const NewDeckForm = ({navigation: { navigate }}) => {
     const createNewDeck = () => {
         const request = new Request(); 
         request.post(url,newDeck)
-        .then(data => {setNewDeck(data)
+        .then(data => {
+            setNewDeck(data)
             navigate('SpecificDeck', {deck_id: data.id});
         })
     }

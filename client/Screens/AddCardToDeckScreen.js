@@ -1,10 +1,11 @@
 import React, {useState, useEffect}from 'react';
 import { Image, Alert, Text,TextInput, Button, View, SafeAreaView, StyleSheet, Pressable } from 'react-native';
-
-const AddCardToDeckScreen = ({route}) => {
+import Request from '../helpers/request';
+const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
 
     const [currentCard, setCurrentCard] = useState({});
     const [searchString,setSearchString] = useState('');
+    const [cardData, setCardData] = useState({})
     const [modalVisible, setModalVisible] = useState(false);
 
     const {deck_id} = route.params;
@@ -16,11 +17,59 @@ const AddCardToDeckScreen = ({route}) => {
 
     const baseURL = "https://api.scryfall.com/cards/named?fuzzy=";
 
+    const addCardToDeck = () => {
+        console.log(deck_id);
+        const url = "http://192.168.1.166:8080/decks/" + deck_id + "/add-card"
+        const request = new Request();
+        request.post(url, currentCard)
+        .then(data => navigate('SpecificDeck', {deck_id: data.id}))
+    }
+
+    // this.decks = new ArrayList<>();
+    // this.name = name;
+    // this.colour = colour;
+    // this.cost = cost;
+    // this.oracleText = oracleText;
+    // this.power = power;
+    // this.toughness = toughness;
+    // this.type = type;
+
+    const parseType = rawType => {
+        if (rawType.includes('creature')) {
+            return 'CREATURE';
+        } else if (rawType.includes('land')) {
+            return 'LAND';
+        } else if (rawType.includes('artefact')) {
+            return 'ARTEFACT';
+        } else if (rawType.includes('enchantment')) {
+            return 'ENCHANTMENT';
+        } else if (rawType.includes('instant')) {
+            return 'INSTANT';
+        } else if (rawType.includes('sorcery')) {
+            return 'SORCERY';
+        }
+    }
 
     const getCard = () => {
         return fetch(baseURL + searchString)
             .then(res => res.json())
-            .then(data => setCurrentCard(data))
+            .then(data => {
+                const { id, type_line, toughness, power, cmc, name, colors, oracle_text, image_uris } = data;
+                // TODO Colors as array, decks as something
+                
+                setCurrentCard({
+                    id: id,
+                    decks: [],
+                    name: name,
+                    colour: colors[0] || "",
+                    cost: cmc,
+                    oracleText: oracle_text,
+                    power: power,
+                    toughness: toughness,
+                    type: parseType(type_line.toLowerCase()),
+                    image_uris: image_uris,
+                });
+            })
     };
 
 
@@ -51,7 +100,7 @@ const AddCardToDeckScreen = ({route}) => {
             style = {styles.button}
             title = {`${deck_id}`}
             color = "black"
-            onPress = {() => {}}
+            onPress = {addCardToDeck}
             />
         </SafeAreaView>
     )

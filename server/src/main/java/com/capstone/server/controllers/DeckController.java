@@ -33,16 +33,16 @@ public class DeckController {
     @PostMapping(value = "/decks")
     public ResponseEntity<Deck> saveDeck(@RequestBody Deck deck){
         deckRepository.save(deck);
-        return new ResponseEntity<>(deck, HttpStatus.CREATED);
+        return new ResponseEntity<>(deck, HttpStatus.OK);
     }
 
     @PostMapping(value = "/decks/{id}/add-card")
     public ResponseEntity<Deck> addCardToDeck(@RequestBody Card card, @PathVariable Long id){
-        Deck deck = deckRepository.getById(id);
+        Deck deck = deckRepository.findById(id).get();
         cardRepository.save(card);
         deck.addCard(card);
         deckRepository.save(deck);
-        return new ResponseEntity<>(deck, HttpStatus.CREATED);
+        return new ResponseEntity<>(deck, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/decks/{id}")

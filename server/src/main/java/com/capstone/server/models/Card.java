@@ -7,13 +7,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Card {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "cards")
+public class Card {
 
     @JsonIgnoreProperties(value = "cards")
     @ManyToMany
@@ -36,23 +33,40 @@ public abstract class Card {
     @Column(name = "oracle_text", length = 800)
     private String oracleText;
 
-    public Card(String name, String colour, int cost, String oracleText) {
+    @Column(name = "power")
+    private int power;
+
+    @Column(name = "toughness")
+    private int toughness;
+
+    @Column(name = "type", length = 800)
+    private String type;
+
+    @Id
+    @Column(name = "id")
+    private String id;
+
+    public Card(String name, String colour, int cost, String oracleText, int power, int toughness, String type, String id ) {
         this.decks = new ArrayList<>();
         this.name = name;
         this.colour = colour;
         this.cost = cost;
         this.oracleText = oracleText;
+        this.power = power;
+        this.toughness = toughness;
+        this.type = type;
+        this.id = id;
     }
 
     public Card() {
 
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -95,5 +109,33 @@ public abstract class Card {
 
     public void setOracleText(String oracleText) {
         this.oracleText = oracleText;
+    }
+
+    public List<Deck> getDecks() {
+        return decks;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getToughness() {
+        return toughness;
+    }
+
+    public void setToughness(int toughness) {
+        this.toughness = toughness;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
