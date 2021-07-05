@@ -7,7 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from './Screens/HomeScreen';
 import DeckScreen from './Screens/DeckScreen';
 import AllDecksScreen from './Screens/AllDecksScreen'
-import NewDeckScreen from './Screens/NewDeckScreen';
+import AddCardToDeckScreen from './Screens/AddCardToDeckScreen';
+
 // import Request from './helpers/request'
 // import Navigator from './routes/HomeStack'
 
@@ -40,7 +41,7 @@ export default function App() {
         <Stack.Screen name = "Home" component ={HomeScreen} options={{title: "MANALYZER V.01"}} />
         <Stack.Screen name = "AllDecks" component = {AllDecksScreen} options={{title: "All Decks"}}/> 
         <Stack.Screen name = "SpecificDeck" component = {DeckScreen} options={{title: "Deck Info"}}/>
-        <Stack.Screen name = "NewDeck" component = {NewDeckScreen} options={{title: "New Deck"}}/>
+        <Stack.Screen name = "NewDeck" component = {AddCardToDeckScreen} options={{title: "New Deck"}}/>
       </Stack.Navigator>
     </NavigationContainer>
 

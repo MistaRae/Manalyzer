@@ -2,10 +2,14 @@ import React, {useState, useEffect}from 'react';
 import { ScrollView, StyleSheet, Text, SafeAreaView, View } from 'react-native';
 import DeckSnapshot from '../components/all_decks/DeckSnapshot';
 import MenuBar from '../components/app_utility/MenuBar';
+import NewDeckForm from '../components/app_utility/NewDeckForm'
 
 const AllDecksScreen = ({navigation}) => {
 
     const [decks, setDecks] = useState([]);
+    const [newDeck,setNewDeck] = useState({
+        name:""
+    })
 
     const baseURL = 'http://192.168.1.166:8080/decks';
 

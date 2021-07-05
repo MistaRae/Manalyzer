@@ -1363,3 +1363,6 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 2021-07-01 00:21:50 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "ORACLE_TEXT VARCHAR(300)": "STRINGDECODE('Companion \u2014 Each permanent card in your starting deck has mana value 2 or less. (If this card is your chosen ... (330)"; SQL statement:
 insert into card (id, colour, cost, name, oracle_text) values (null, ?, ?, ?, ?) [22001-200]
+2021-07-05 14:32:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CARD_ID[*]"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CARD_ID [42001-200]

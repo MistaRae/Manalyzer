@@ -1,25 +1,16 @@
 import React, {useState, useEffect}from 'react';
-import { SafeAreaView, Image, StyleSheet, Text, View } from 'react-native';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable } from 'react-native';
 
 const DeckScreen = ({route, navigation}) => {
 
     const {deck_id} = route.params;
 
-    // const {deck} = route.params;
-    // const topCard = deck.map((card) => {
-    //     card.name
-    // })
-    // console.log(topCard)
-
-    const [currentDeck,setCurrentDeck] = useState([]);
+    const [currentDeck,setCurrentDeck] = useState(null);
     const [cardData,setCardData] = useState(null);
-    const [deckImageURL, setDeckImageURL] = useState('https://c1.scryfall.com/file/scryfall-cards/border_crop/front/1/2/12ab9836-bc90-4d92-a86d-b8e1b7671aa7.jpg?1562898915');
+    // const [deckImageURL, setDeckImageURL] = useState('https://c1.scryfall.com/file/scryfall-cards/border_crop/front/1/2/12ab9836-bc90-4d92-a86d-b8e1b7671aa7.jpg?1562898915');
 
 
     const baseURL = 'http://192.168.1.166:8080/decks/';
-    const ImageSearchURL = "https://api.scryfall.com/cards/named?";
-    const randomCardURL = "https://api.scryfall.com/cards/random"
 
     const getCurrentDeck = () => {
             return fetch(baseURL + deck_id)
@@ -27,28 +18,30 @@ const DeckScreen = ({route, navigation}) => {
                 .then(data => setCurrentDeck(data))
         };
 
-    // const getCardData = () => {
-    //     return fetch(randomCardURL)
-    //     .then(res => res.json())
-    //     .then(data => setCardData(data))
-    // }
-
-    // 
-
-    // const getDeckImageURL = () => {
-    //     fetch(randomCardURL)
-    //     .then(res => res.json())
-    //     .then(data => setCardData(data))
-        
-    //     const newURL = cardData.image_uris.small
-    //     newURL ? setDeckImageURL(newURL) : console.log("null")       
-    // }
-
     useEffect(() => {
-        getCurrentDeck()
-        // getDeckImageURL()
-        
+        getCurrentDeck()        
     },[])
+
+    if (!currentDeck) {return (
+        <Text>loading...</Text>)}
+        const deckList = currentDeck.cards
+        const reducedList = deckList.reduce((accumulator, currentCard) => {
+            const found = accumulator.find(card => card.id == currentCard.id)
+            if (found) {found.quantity += 1}
+            else {accumulator.push({...currentCard, quantity: 1})}
+            return accumulator 
+        },[])
+        const newDeckList = reducedList.map(card => {
+        return (
+            <Pressable>
+         
+            <Text key = {card.id}> {card.name} x {card.quantity}</Text>
+            </Pressable>
+        )
+    }
+    )
+
+   
 
 
     return (
@@ -60,15 +53,11 @@ const DeckScreen = ({route, navigation}) => {
             <Text>
                 TOTAL CARDS: {currentDeck.cardCount}
             </Text>
-            <Text>
-                DECK LIST: 
-            </Text>
-            {deckImageURL ? <Image 
-                style={styles.card}
-                source = {{uri: deckImageURL}} 
-                      
-            /> : <Text>image not loading </Text>
-        } 
+            
+          {newDeckList}
+           
+           
+        
         </SafeAreaView>
 
         )

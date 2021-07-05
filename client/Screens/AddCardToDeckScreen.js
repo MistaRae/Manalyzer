@@ -1,14 +1,12 @@
 import React, {useState, useEffect}from 'react';
 import { Image, Alert, Text,TextInput, Button, View, SafeAreaView, StyleSheet, Pressable } from 'react-native';
 
-const NewDeckScreen = () => {
+const AddCardToDeckScreen = () => {
 
     const [currentCard, setCurrentCard] = useState({});
     const [searchString,setSearchString] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
-    const [newDeck,setNewDeck] = useState({
-        name:""
-    })
+
 
     useEffect(() => {
         getCard()
@@ -94,4 +92,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default NewDeckScreen;
+export default AddCardToDeckScreen;
