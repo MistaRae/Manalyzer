@@ -1,18 +1,18 @@
 import React, {useState, useEffect}from 'react';
 import { StyleSheet,SafeAreaView, Text, View, Dimensions } from 'react-native';
-import { ProgressChart } from 'react-native-chart-kit';
+import { ProgressChart, BarChart } from 'react-native-chart-kit';
 
 const screenWidth = Dimensions.get("window").width
 
 const CompositionChart = ({route, navigation : {navigate}}) => {
 
-    const {deckList} = route.params; // <<-- should this be a state
-    const deck_id = route.params; // <<-- do i need this? should i just take the whole deck object through?
-    const cardCount = deckList.length // <<-- total number of cards in the deck for working out percentage content
+    const {deckList} = route.params; 
+    const deck_id = route.params; 
+    const cardCount = deckList.length 
 
-    const getPercentageContent = (cardQuantity, cardCount) => {
-       const percentageContent =  cardQuantity / cardCount //  <<-- numbers for chart need to be floats
-       percentageContent.toFixed(2); // <<-- rounding to 2 decimal places
+    const getPercentage = (cardQuantity, cardCount) => {
+       const percentageContent =  cardQuantity / cardCount 
+       percentageContent.toFixed(2);
        const float = new Number(percentageContent)
        return float
     } 
@@ -22,8 +22,8 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             const found = accumulator.find(card => card.type == currentCard.type) // <<-- count by card type(instant,sorcery,creature)
             if (found) {found.quantity += 1}
             else {accumulator.push({...currentCard, quantity: 1})}
-            return accumulator // <<-- populating reducedList with accumulator values
-        },[]); // <<-- second argument, new list
+            return accumulator 
+        },[]); 
 
         const sortedList = reducedList.sort(function(a,b){
             const typeA = a.type.toUpperCase();
@@ -37,41 +37,88 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             return 0;
         })
 
-        const newData = sortedList.map((cardType) => getPercentageContent(cardType.quantity, cardCount));
+        const newData = sortedList.map((cardType) => getPercentage(cardType.quantity, cardCount));
         return newData;
     } 
 
     const data = {
         labels: ["Art.","Crea.", "Ench.","Inst.","Land", "Sorc."], 
         data: getChartData()
-        // data: [0.10,0.6,0.2,0.3,0.5] 
     }
+
+    const ManaCurve = () => {
+
+        const getBarData = () => {
+
+        }
+
+
+        const barData = {
+            labels: ['', '', '', '', '', ''],
+            datasets: [
+              {
+                data: getChartData()
+              },
+            ],
+          };
+    
+        return (
+            <SafeAreaView>
+                <BarChart
+                    data={barData}
+                    width={screenWidth -40}
+                    height={220}
+                    // yAxisLabel={""}
+                    // xAxisLabel={""}
+                    chartConfig={barChartConfig}/>
+            </SafeAreaView>
+    
+        )
+    
+    }
+
+
+   
 
     return (
         <SafeAreaView
         style = {styles.container}>
             <ProgressChart
+              style={styles.progressChart}
               data={data}
               width={screenWidth -40}
               height={220}
               strokeWidth={12}
               radius={30}
-              chartConfig={chartConfig}
+              chartConfig={progressChartConfig}
               hideLegend={false}
+            />
+            <ManaCurve
+            style = {styles.barChart}
             />
         </SafeAreaView>
     )
 };
 
-const chartConfig = {
+const progressChartConfig = {
     backgroundColor: '#ffffff',
     backgroundGradientFrom: '#1E2923',
     backgroundGradientTo: '#08130D',
     color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-    // color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
     style: {
     borderRadius: 16
 }}
+
+const barChartConfig = {
+    backgroundColor: '#ffffff',
+    backgroundGradientFrom: '#1E2923',
+    backgroundGradientTo: '#08130D',
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    style: {
+    borderRadius: 16
+    }
+}
+
 
 const styles = StyleSheet.create({
     container: {
@@ -80,18 +127,6 @@ const styles = StyleSheet.create({
         // backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'flex-start',
-    }, 
-    all_fields: {
-        flexDirection: "row",
-        flex:1,
-    },
-    search_field: {
-        borderColor: "black",
-        borderWidth: 2,
-        flex: .1,
-        padding: 10,
-        height: 50,
-        margin: 5
     }, 
     outline: {
         flex: 1,
@@ -104,8 +139,14 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
         width: "100%",
         height: "70%",
-        // width: 388,
-        // height: 550,
+    }, 
+    barChart: {
+        marginTop: 10,
+        marginBottom: 10
+    },
+    progressChart: {
+        marginTop: 0,
+        marginBottom: 10
     }
 
 })
