@@ -104,7 +104,14 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
               },
             ],
           };
-    
+
+          
+
+
+
+
+
+
         return (
             <SafeAreaView>
                 <BarChart
@@ -118,6 +125,32 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
     
         )
     
+    }
+
+
+    const Ratings = () => {
+
+        let totalCost = 0;
+        deckList.forEach((card) => totalCost += card.cost)
+
+        
+          let totalLand = 0;
+          deckList.forEach((card) => {
+            if(card.type == 'LAND'){
+                totalLand += 1 
+            }
+            return totalLand
+        })
+        
+        let playables = cardCount - totalLand 
+        let averageCost = totalCost / playables
+
+        return(
+            <SafeAreaView>
+                <Text>AVERAGE COST: {averageCost}</Text>
+            </SafeAreaView>
+        )
+
     }
 
 
@@ -138,6 +171,9 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             />
             <ManaCurve
             style = {styles.barChart}
+            />
+            <Ratings
+            style = {styles.ratings}
             />
         </SafeAreaView>
     )
@@ -190,6 +226,9 @@ const styles = StyleSheet.create({
     progressChart: {
         marginTop: 0,
         marginBottom: 10
+    }, 
+    ratings: {
+
     }
 
 })
