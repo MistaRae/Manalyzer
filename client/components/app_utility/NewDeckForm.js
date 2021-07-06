@@ -31,6 +31,7 @@ const NewDeckForm = ({navigation: { navigate }}) => {
             title = "add deck"
             style = {styles.Button}
             onPress = {createNewDeck}
+            color = "black"
 
             />
         </SafeAreaView>

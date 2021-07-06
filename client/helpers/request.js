@@ -9,7 +9,7 @@ class Request {
       return fetch(url, {
         method: "DELETE",
         headers: {'Content-Type': 'application/json'}
-      }).then((res) => res.json())
+      })
     }
 
     post(url, payload){

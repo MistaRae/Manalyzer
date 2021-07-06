@@ -1,5 +1,6 @@
 import React, {useState, useEffect}from 'react';
 import { ScrollView, StyleSheet, Text, SafeAreaView, View } from 'react-native';
+import { useIsFocused } from '@react-navigation/native'
 import DeckSnapshot from '../components/all_decks/DeckSnapshot';
 import MenuBar from '../components/app_utility/MenuBar';
 import NewDeckForm from '../components/app_utility/NewDeckForm'
@@ -7,6 +8,8 @@ import NewDeckForm from '../components/app_utility/NewDeckForm'
 const AllDecksScreen = ({navigation}) => {
 
     const [decks, setDecks] = useState([]);
+    const isFocused = useIsFocused()
+
   
 
     const baseURL = 'http://192.168.1.166:8080/decks';
@@ -19,7 +22,7 @@ const AllDecksScreen = ({navigation}) => {
 
     useEffect(() => {
         getDecks()
-    },[])
+    },[[isFocused]])
 
     const deckNodes = decks.map((deck) => {
         return ( 

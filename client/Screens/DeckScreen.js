@@ -2,6 +2,7 @@ import React, {useState, useEffect}from 'react';
 import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable, Button } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
 import { useIsFocused } from '@react-navigation/native'
+import Request from '../helpers/request';
 
 
 const DeckScreen = ({route, navigation: {navigate}}) => {
@@ -39,13 +40,20 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         const newDeckList = reducedList.map(card => {
         return (
             <Pressable key={card.id}>
-         
             <Text> {card.name} x {card.quantity}</Text>
             </Pressable>
             
         )
     }
     )
+
+    const deleteDeck = () => {
+        const url = "http://192.168.1.166:8080/decks/" + deck_id
+        const request = new Request();
+        request.delete(url, currentDeck)
+        .then(navigate('AllDecks'))
+        .catch(error => console.log(error))
+    }
 
    
 
@@ -62,11 +70,23 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
             
           {newDeckList}
            
-           <Button
+            <Button
            style = {styles.button}
            onPress = {() => {navigate("CardSearch", {deck_id: currentDeck.id})}}
            title= "add cards to deck"
-           
+           color = "black"
+           />
+            <Button
+           style = {styles.button}
+           onPress = {() => {navigate("CompositionChart", {deck_id: currentDeck.id, deckList: deckList})}}
+           title= "deck compostion"
+           color = "black"
+           />
+            <Button
+           style = {styles.button}
+           onPress = {deleteDeck}
+           title= "delete deck"
+           color = "black"
            />
         
         </SafeAreaView>
@@ -88,6 +108,10 @@ const styles = StyleSheet.create({
         height: "20%",
         // width: 388,
         // height: 550,
+    },
+    button: {
+        marginTop: 10,
+        marginBottom: 10,
     }
 })
 

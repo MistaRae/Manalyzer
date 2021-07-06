@@ -9,6 +9,7 @@ import DeckScreen from './Screens/DeckScreen';
 import AllDecksScreen from './Screens/AllDecksScreen'
 import AddCardToDeckScreen from './Screens/AddCardToDeckScreen';
 import NewDeckForm from './components/app_utility/NewDeckForm';
+import CompositionChart from './components/deck_overview/ratings/speed/SpeedChart';
 
 // import Request from './helpers/request'
 // import Navigator from './routes/HomeStack'
@@ -18,6 +19,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MainTabNavigator() {
+  
   return (
     <Tab.Navigator>
       <Tab.Screen 
@@ -44,6 +46,7 @@ export default function App() {
         <Stack.Screen name = "SpecificDeck" component = {DeckScreen} options={{title: "Deck Info"}}/>
         <Stack.Screen name = "NewDeck" component = {NewDeckForm} options={{title: "New Deck"}}/>
         <Stack.Screen name = "CardSearch" component = {AddCardToDeckScreen} options={{title: "Card Search"}}/>
+        <Stack.Screen name = "CompositionChart" component = {CompositionChart} options={{title: "Deck Composition"}}/>
       </Stack.Navigator>
     </NavigationContainer>
 

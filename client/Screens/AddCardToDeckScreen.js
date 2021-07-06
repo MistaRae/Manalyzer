@@ -25,15 +25,6 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
         .then(data => navigate('SpecificDeck', {deck_id: data.id}))
     }
 
-    // this.decks = new ArrayList<>();
-    // this.name = name;
-    // this.colour = colour;
-    // this.cost = cost;
-    // this.oracleText = oracleText;
-    // this.power = power;
-    // this.toughness = toughness;
-    // this.type = type;
-
     const parseType = rawType => {
         if (rawType.includes('creature')) {
             return 'CREATURE';
@@ -61,7 +52,7 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
                     id: id,
                     decks: [],
                     name: name,
-                    colour: colors[0] || "",
+                    colour: colors && colors[0] || "",
                     cost: cmc,
                     oracleText: oracle_text,
                     power: power,
@@ -98,7 +89,7 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
             }
             <Button
             style = {styles.button}
-            title = {`${deck_id}`}
+            title = "add card"
             color = "black"
             onPress = {addCardToDeck}
             />
@@ -140,6 +131,10 @@ const styles = StyleSheet.create({
         height: "70%",
         // width: 388,
         // height: 550,
+    },
+    button: {
+        marginTop: 10,
+        marginBottom: 10,
     }
 })
 
