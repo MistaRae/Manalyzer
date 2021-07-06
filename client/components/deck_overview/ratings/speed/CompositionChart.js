@@ -54,8 +54,8 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
               data={data}
               width={screenWidth -40}
               height={220}
-              strokeWidth={16}
-              radius={32}
+              strokeWidth={12}
+              radius={30}
               chartConfig={chartConfig}
               hideLegend={false}
             />
