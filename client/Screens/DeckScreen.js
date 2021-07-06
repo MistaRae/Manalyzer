@@ -114,8 +114,10 @@ const styles = StyleSheet.create({
         // height: 550,
     },
     button: {
-        marginTop: 20,
-        marginBottom: 20,    
+        marginTop: 10,
+        marginBottom: 10,    
+    },
+    deckName: {
     }
 })
 
