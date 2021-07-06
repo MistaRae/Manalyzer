@@ -1,8 +1,12 @@
 import React, {useState, useEffect}from 'react';
 import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable, Button } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
-import { useIsFocused } from '@react-navigation/native'
+import { useIsFocused } from '@react-navigation/native';
 import Request from '../helpers/request';
+import { 
+    BebasNeue_400Regular 
+  } from '@expo-google-fonts/bebas-neue';
+import {useFonts} from 'expo-font';
 
 
 const DeckScreen = ({route, navigation: {navigate}}) => {
@@ -41,7 +45,9 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         return (
             <Pressable key={card.id}
             onPress = {() => {}}>
-            <Text> {card.name} x {card.quantity}</Text>
+            <Text
+            style={styles.deckList}
+            > {card.name} x {card.quantity}</Text>
             </Pressable>
         )
     }
@@ -64,34 +70,54 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
     return (
 
         <SafeAreaView style = {styles.container}>
-            <Text>
+            <Text
+            style = {styles.deckName}
+            >
             DECK NAME: {currentDeck.name}
             </Text>
-            <Text>
+            <Text
+            style = {styles.deckName}>
                 TOTAL CARDS: {cardCount}
             </Text>
-            
+            <View
+            style = {styles.deckListContainer}>
           {newDeckList}
-           
+            </View>
+
+            <View
+            style = {styles.buttonContainer}
+            >
+            <View
+            style = {styles.button}
+            >
             <Button
            style = {styles.button}
            onPress = {() => {navigate("CardSearch", {deck_id: currentDeck.id})}}
            title= "add cards to deck"
            color = "black"
            />
+           </View>
+           <View
+            style = {styles.button}
+            >
             <Button
            style = {styles.button}
            onPress = {() => {navigate("CompositionChart", {deck_id: currentDeck.id, deckList: deckList})}}
            title= "deck compostion"
            color = "black"
            />
+           </View>
+           <View
+            style = {styles.button}
+            >
             <Button
            style = {styles.button}
            onPress = {deleteDeck}
            title= "delete deck"
            color = "black"
            />
-        
+           </View>
+        </View>
         </SafeAreaView>
 
         )
@@ -101,7 +127,7 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 10,
+        paddingTop: 50,
         marginLeft: 20,
         marginRight: 20
     },
@@ -114,10 +140,24 @@ const styles = StyleSheet.create({
         // height: 550,
     },
     button: {
+        // flex: 1,
+        margin: 10,
         marginTop: 10,
         marginBottom: 10,    
     },
     deckName: {
+        fontWeight: 'bold'
+    }, 
+    deckList: {
+        paddingLeft: 10
+    }, 
+    deckListContainer: {
+        margin: 10
+    }, 
+    buttonContainer: {
+        justifyContent: 'space-between'
+
+
     }
 })
 

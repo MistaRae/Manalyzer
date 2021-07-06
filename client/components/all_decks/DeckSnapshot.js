@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react';
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, View, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
@@ -18,12 +18,19 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
                 const id = deck.id
                 navigate('SpecificDeck', {deck_id: id, deck});
             }}>
+            <View>
+                <View>
             <Text style={styles.h1}>
                 DECK NAME: {deck.name}
             </Text>
             <Text style={styles.h2}>
                 CARD COUNT: {cardCount}
             </Text>
+            </View>
+            <View>
+                <Image/>
+            </View>
+            </View>
             </Pressable>
         </SafeAreaView>   
     )

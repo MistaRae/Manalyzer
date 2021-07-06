@@ -45,9 +45,9 @@ const AllDecksScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: 20,
+        // marginLeft: 20,
         flex: 1,
-        // backgroundColor: '#fff',
+        backgroundColor: '#fff',
         // alignItems: 'center',
         // justifyContent: 'center',
     },

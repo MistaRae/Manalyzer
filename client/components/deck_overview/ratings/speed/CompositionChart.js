@@ -32,7 +32,7 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
                 return -1
             }
             if (typeA > typeB){
-                return 1
+                return 1 
             }
             return 0;
         })
@@ -130,24 +130,85 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
 
     const Ratings = () => {
 
+        let rating = 0
         let totalCost = 0;
-        deckList.forEach((card) => totalCost += card.cost)
+        let totalCreatures = 0;
+        let totalInstants = 0;
+        let totalSorceries = 0;
+        let totalLand = 0;
 
-        
-          let totalLand = 0;
+        deckList.forEach((card) => totalCost += card.cost)
+          
+
           deckList.forEach((card) => {
             if(card.type == 'LAND'){
                 totalLand += 1 
             }
             return totalLand
         })
+
+          deckList.forEach((card) => {
+            if(card.type == 'CREATURE'){
+                totalCreatures += 1 
+            }
+            return totalCreatures
+        })
+
+          deckList.forEach((card) => {
+            if(card.type == 'INSTANT'){
+                totalInstants += 1 
+            }
+            return totalInstants
+        })
+
+        deckList.forEach((card) => {
+          if(card.type == 'SORCERY'){
+              totalSorceries += 1 
+          }
+          return totalSorceries
+      })
+
+
         
         let playables = cardCount - totalLand 
         let averageCost = totalCost / playables
 
+        const getRating = () => {
+            if (cardCount > 59){
+                rating +=1
+            } 
+            console.log(rating)
+            if(cardCount / totalLand > 0.3) {
+                rating += 1
+            }
+            console.log(rating)
+
+            if(averageCost > 2.0 && averageCost < 3.3) {
+                rating += 1
+            }
+            console.log(rating)
+
+            if(cardCount / totalCreatures > 0.2 && cardCount / totalCreatures < 0.4){
+                rating += 1.5
+            }
+            console.log(rating)
+
+            if(totalInstants > totalSorceries) {
+                rating += 0.5
+            }
+            console.log(rating)
+
+        }
+        
+        getRating()
+
         return(
             <SafeAreaView>
-                <Text>AVERAGE COST: {averageCost}</Text>
+
+            {/* <Text>{rating > 0 && rating < 1} &#11240; </Text> */}
+            <Text
+            style = {styles.ratings}
+            >RATING: {rating}/5</Text>
             </SafeAreaView>
         )
 
@@ -228,7 +289,8 @@ const styles = StyleSheet.create({
         marginBottom: 10
     }, 
     ratings: {
-
+        padding: 20,
+        fontSize: 20
     }
 
 })
