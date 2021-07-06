@@ -39,7 +39,8 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         },[])
         const newDeckList = reducedList.map(card => {
         return (
-            <Pressable key={card.id}>
+            <Pressable key={card.id}
+            onPress = {() => {}}>
             <Text> {card.name} x {card.quantity}</Text>
             </Pressable>
         )
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 10,
         marginLeft: 20,
+        marginRight: 20
     },
     card: {
         backgroundColor: "black",
@@ -112,8 +114,8 @@ const styles = StyleSheet.create({
         // height: 550,
     },
     button: {
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: 20,
+        marginBottom: 20,    
     }
 })
 
