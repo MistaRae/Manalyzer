@@ -49,15 +49,58 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
     const ManaCurve = () => {
 
         const getBarData = () => {
+            const reducedList = deckList.reduce((accumulator, currentCard) => {
+                const found = accumulator.find(card => card.cost == currentCard.cost)
+                if (found) {found.quantity += 1}
+                else {accumulator.push({...currentCard, quantity: 1})}
+                return accumulator 
+            },[]); 
+            const sortedList = reducedList.sort(function(a,b){
+                const typeA = a.cost;
+                const typeB = b.cost;
+                if (typeA < typeB){
+                    return -1
+                }
+                if (typeA > typeB){
+                    return 1
+                }
+                return 0;
+            })
+    
+            const newData = sortedList.map((card) => card.quantity)
+            return newData;
+        } 
 
+        const getBarLabels = () => {
+            const reducedList = deckList.reduce((accumulator, currentCard) => {
+                const found = accumulator.find(card => card.cost == currentCard.cost)
+                if (found) {found.quantity += 1}
+                else {accumulator.push({...currentCard, quantity: 1})}
+                return accumulator 
+            },[]); 
+            const sortedList = reducedList.sort(function(a,b){
+                const typeA = a.cost;
+                const typeB = b.cost;
+                if (typeA < typeB){
+                    return -1
+                }
+                if (typeA > typeB){
+                    return 1
+                }
+                return 0;
+            })
+    
+            const newData = sortedList.map((card) => card.cost)
+            return newData;
         }
+        
 
 
         const barData = {
-            labels: ['', '', '', '', '', ''],
+            labels: getBarLabels(),
             datasets: [
               {
-                data: getChartData()
+                data: getBarData()
               },
             ],
           };
