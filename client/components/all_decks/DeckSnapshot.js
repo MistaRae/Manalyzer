@@ -6,6 +6,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DeckSnapshot = ({deck, navigation: { navigate }}) => {
 
+    const {cards} = deck;
+    const cardCount = cards.length
+
     return(
         
         <SafeAreaView style={styles.container}>
@@ -18,8 +21,8 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
             <Text style={styles.h1}>
                 DECK NAME: {deck.name}
             </Text>
-            <Text> 
-               TOTAL CARDS: {deck.cardCount}
+            <Text style={styles.h2}>
+                CARD COUNT: {cardCount}
             </Text>
             </Pressable>
         </SafeAreaView>   
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
     },
     h2: {
         flex: 1,
-        backgroundColor: 'blue',
+        // backgroundColor: 'blue',
         alignItems: 'center',
         justifyContent: 'flex-start',
         fontSize:15,

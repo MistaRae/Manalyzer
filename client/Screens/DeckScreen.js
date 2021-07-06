@@ -42,10 +42,12 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
             <Pressable key={card.id}>
             <Text> {card.name} x {card.quantity}</Text>
             </Pressable>
-            
         )
     }
     )
+
+    const {cards} = currentDeck
+    const cardCount = cards.length
 
     const deleteDeck = () => {
         const url = "http://192.168.1.166:8080/decks/" + deck_id
@@ -65,7 +67,7 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
             DECK NAME: {currentDeck.name}
             </Text>
             <Text>
-                TOTAL CARDS: {currentDeck.cardCount}
+                TOTAL CARDS: {cardCount}
             </Text>
             
           {newDeckList}
