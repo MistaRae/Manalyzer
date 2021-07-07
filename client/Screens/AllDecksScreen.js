@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react';
-import { ScrollView, StyleSheet, Text, SafeAreaView, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, SafeAreaView, View, ActivityIndicator} from 'react-native';
 import { useIsFocused } from '@react-navigation/native'
 import DeckSnapshot from '../components/all_decks/DeckSnapshot';
 import MenuBar from '../components/app_utility/MenuBar';
@@ -42,7 +42,11 @@ const AllDecksScreen = ({navigation}) => {
  
     if (decks.length == 0) {
         return (
-            <Text>loading</Text>
+            <ActivityIndicator
+            style = {styles.activityIndicator}
+            size = 'large'
+            color = 'darkgrey'
+            />
         )
     }
 
@@ -79,6 +83,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         fontSize: 20,
+    },
+    activityIndicator: {
+        flex: 1,
+        alignContent: "center",
+        justifyContent: "center",
+        alignItems: "center"
     }
 });
 

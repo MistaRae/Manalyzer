@@ -21,6 +21,10 @@ public class Card {
     )
     private List<Deck> decks;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "name")
     private String name;
 
@@ -42,9 +46,8 @@ public class Card {
     @Column(name = "type", length = 800)
     private String type;
 
-    @Id
-    @Column(name = "id")
-    private String id;
+    @Column(name = "api_id")
+    private String api_id;
 
     @Column(name = "image_URI")
     private String imageURI;
@@ -52,7 +55,7 @@ public class Card {
     @Column(name = "price")
     private String price;
 
-    public Card(String name, String colour, int cost, String oracleText, int power, int toughness, String type, String id,String imageURI, String price ) {
+    public Card(String name, String colour, int cost, String oracleText, int power, int toughness, String type, String api_id,String imageURI, String price ) {
         this.decks = new ArrayList<>();
         this.name = name;
         this.colour = colour;
@@ -61,7 +64,7 @@ public class Card {
         this.power = power;
         this.toughness = toughness;
         this.type = type;
-        this.id = id;
+        this.api_id = api_id;
         this.imageURI = imageURI;
         this.price = price;
     }
@@ -70,11 +73,11 @@ public class Card {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -161,5 +164,13 @@ public class Card {
 
     public void setImageURI(String imageURI) {
         this.imageURI = imageURI;
+    }
+
+    public String getApi_id() {
+        return api_id;
+    }
+
+    public void setApi_id(String api_id) {
+        this.api_id = api_id;
     }
 }

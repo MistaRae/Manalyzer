@@ -12,7 +12,7 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
     const [faceCard, setFaceCard] = useState(null)
 
     const getFaceCard = () => {
-    cards.sort(function(cardA,cardB){
+    const sortedCards = [...cards].sort(function(cardA,cardB){
         const priceA = cardA.price;
         const priceB = cardB.price;
         if (priceA > priceB){
@@ -24,10 +24,11 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
         return 0;
     });
 
-    const mostExpensiveCard = cards[0]
-
-    setFaceCard(mostExpensiveCard)
+        const mostExpensiveCard = sortedCards[0]
+        setFaceCard(mostExpensiveCard)
+        // return mostExpensiveCard
     }
+
     
     useEffect(()=>{
         let mounted = true
@@ -39,7 +40,7 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
         }
     }, [isFocused])
    
-
+    // const faceCard = getFaceCard()
 
     return(
         
@@ -69,7 +70,7 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
                     {faceCard ?
                     <Image 
                     style={styles.card}
-                    source = {{uri: faceCard.image_URI}} 
+                    source = {{uri: faceCard.imageURI}} 
                     />
                     :
                     <Image 

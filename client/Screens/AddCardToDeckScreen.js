@@ -48,7 +48,7 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
                 // TODO Colors as array, decks as something
                 
                 setCurrentCard({
-                    id: id,
+                    api_id: id,
                     decks: [],
                     name: name,
                     colour: colors && colors[0] || "",
@@ -57,9 +57,8 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
                     power: power,
                     toughness: toughness,
                     type: type_line,
-                    // type: parseType(type_line.toLowerCase()),
-                    image_uris: image_uris,
-                    price: prices.eur
+                    imageURI: image_uris && image_uris.border_crop,
+                    price: prices && prices.eur
                 });
             })
             .catch()
@@ -81,7 +80,7 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
             {currentCard.name ? 
                 <Image 
                 style={styles.card}
-                source = {{uri: currentCard.image_uris.border_crop}} 
+                source = {{uri: currentCard.imageURI}} 
                 />
                 :
                 <Image 
