@@ -177,26 +177,21 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             if (cardCount > 59){
                 rating +=1
             } 
-            console.log(rating)
             if(cardCount / totalLand > 0.3) {
                 rating += 1
             }
-            console.log(rating)
 
             if(averageCost > 2.0 && averageCost < 3.3) {
                 rating += 1
             }
-            console.log(rating)
 
             if(cardCount / totalCreatures > 0.2 && cardCount / totalCreatures < 0.4){
                 rating += 1.5
             }
-            console.log(rating)
 
             if(totalInstants > totalSorceries) {
                 rating += 0.5
             }
-            console.log(rating)
 
         }
         

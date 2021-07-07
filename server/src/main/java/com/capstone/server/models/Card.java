@@ -46,7 +46,10 @@ public class Card {
     @Column(name = "id")
     private String id;
 
-    public Card(String name, String colour, int cost, String oracleText, int power, int toughness, String type, String id ) {
+    @Column(name = "price")
+    private String price;
+
+    public Card(String name, String colour, int cost, String oracleText, int power, int toughness, String type, String id, String price ) {
         this.decks = new ArrayList<>();
         this.name = name;
         this.colour = colour;
@@ -56,6 +59,7 @@ public class Card {
         this.toughness = toughness;
         this.type = type;
         this.id = id;
+        this.price = price;
     }
 
     public Card() {
@@ -137,5 +141,13 @@ public class Card {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

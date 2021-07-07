@@ -25,11 +25,12 @@ const AllDecksScreen = ({navigation}) => {
     },[[isFocused]])
 
     const deckNodes = decks.map((deck) => {
+
+
         return ( 
-            <DeckSnapshot key ={deck.id} deck={deck} navigation={navigation}/>
+            <DeckSnapshot key ={deck.id} deck={deck} navigation={navigation} />
         )
     });
-
  
     return(
         

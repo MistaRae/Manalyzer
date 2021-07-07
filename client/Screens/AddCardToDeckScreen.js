@@ -18,7 +18,6 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
     const baseURL = "https://api.scryfall.com/cards/named?fuzzy=";
 
     const addCardToDeck = () => {
-        console.log(deck_id);
         const url = "http://192.168.1.166:8080/decks/" + deck_id + "/add-card"
         const request = new Request();
         request.post(url, currentCard)
@@ -45,7 +44,7 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
         return fetch(baseURL + searchString)
             .then(res => res.json())
             .then(data => {
-                const { id, type_line, toughness, power, cmc, name, colors, oracle_text, image_uris } = data;
+                const { id, type_line, toughness, power, cmc, name, colors, oracle_text, image_uris, prices } = data;
                 // TODO Colors as array, decks as something
                 
                 setCurrentCard({
@@ -59,8 +58,10 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
                     toughness: toughness,
                     type: parseType(type_line.toLowerCase()),
                     image_uris: image_uris,
+                    price: prices.eur
                 });
             })
+            .catch(data => console.log(data))
     };
 
 

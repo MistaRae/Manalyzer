@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
         flex:1,
     },
     search_field: {
-        borderColor: "black",
+        marginBottom: 10,
+        borderColor: "grey",
         borderWidth: 2,
-        flex: .1,
-        padding: 10,
-        height: 50,
-        margin: 5
+        padding: 5,
+        width: 220
+
     }, 
     outline: {
         flex: 1,

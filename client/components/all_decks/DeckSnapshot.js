@@ -9,6 +9,16 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
     const {cards} = deck;
     const cardCount = cards.length
 
+
+    // const deckPrices = []
+    // const getFaceCard = () => {
+    // cards.forEach((card) => {
+    //         deckPrices.push(card.price)
+    //     })
+    // }
+
+
+
     return(
         
         <SafeAreaView style={styles.container}>

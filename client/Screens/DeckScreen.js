@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react';
-import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable, Button } from 'react-native';
+import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable, Button, ActivityIndicator } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
 import { useIsFocused } from '@react-navigation/native';
 import Request from '../helpers/request';
@@ -33,7 +33,11 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
     },[isFocused])
 
     if (!currentDeck) {return (
-        <Text>loading...</Text>)}
+        <ActivityIndicator
+        style = {styles.activityIndicator}
+        />
+        // <Text>loading...</Text>
+        )}
         const deckList = currentDeck.cards
         const reducedList = deckList.reduce((accumulator, currentCard) => {
             const found = accumulator.find(card => card.id == currentCard.id)
@@ -156,8 +160,11 @@ const styles = StyleSheet.create({
     }, 
     buttonContainer: {
         justifyContent: 'space-between'
-
-
+    },
+    activityIndicator: {
+        alignContent: "center",
+        justifyContent: "center",
+        alignItems: "center"
     }
 })
 
