@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { AppLoading } from 'expo-app-loading';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, LogBox } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -16,6 +16,7 @@ import {
 } from '@expo-google-fonts/bebas-neue';
 import {useFonts} from 'expo-font';
 
+LogBox.ignoreAllLogs(true);
 
 const getFonts = () => Font.loadAsync({
     'bebas-neue': require('./assets/fonts/BebasNeue-Regular.ttf')

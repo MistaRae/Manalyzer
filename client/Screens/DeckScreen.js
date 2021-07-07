@@ -11,14 +11,11 @@ import {useFonts} from 'expo-font';
 
 const DeckScreen = ({route, navigation: {navigate}}) => {
 
+    const [currentDeck,setCurrentDeck] = useState(null);
+
     const isFocused = useIsFocused()
 
     const {deck_id} = route.params;
-
-    const [currentDeck,setCurrentDeck] = useState(null);
-    const [cardData,setCardData] = useState(null);
-    // const [deckImageURL, setDeckImageURL] = useState('https://c1.scryfall.com/file/scryfall-cards/border_crop/front/1/2/12ab9836-bc90-4d92-a86d-b8e1b7671aa7.jpg?1562898915');
-
 
     const baseURL = 'http://192.168.1.166:8080/decks/';
 
@@ -29,14 +26,24 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         };
 
     useEffect(() => {
-        getCurrentDeck()        
+        let mounted = true
+        if (mounted) {
+        getCurrentDeck()  
+    }
+        
+        return function cleanup(){
+            mounted = false
+        }
+        
     },[isFocused])
 
     if (!currentDeck) {return (
         <ActivityIndicator
         style = {styles.activityIndicator}
+        size = 'large'
+        color = 'darkgrey'
         />
-        // <Text>loading...</Text>
+   
         )}
         const deckList = currentDeck.cards
         const reducedList = deckList.reduce((accumulator, currentCard) => {
@@ -65,7 +72,7 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         const request = new Request();
         request.delete(url, currentDeck)
         .then(navigate('AllDecks'))
-        .catch(error => console.log(error))
+        // .catch(error => console.log(error))
     }
 
    
@@ -162,6 +169,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     activityIndicator: {
+        flex: 1,
         alignContent: "center",
         justifyContent: "center",
         alignItems: "center"

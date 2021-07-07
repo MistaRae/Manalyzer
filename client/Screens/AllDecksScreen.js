@@ -21,17 +21,31 @@ const AllDecksScreen = ({navigation}) => {
         };
 
     useEffect(() => {
-        getDecks()
+        let mounted = true
+        if (mounted) {
+            getDecks()  
+        }
+            
+            return function cleanup(){
+                mounted = false
+            }
     },[[isFocused]])
 
     const deckNodes = decks.map((deck) => {
 
+        // console.log(deck)
 
         return ( 
             <DeckSnapshot key ={deck.id} deck={deck} navigation={navigation} />
         )
     });
  
+    if (decks.length == 0) {
+        return (
+            <Text>loading</Text>
+        )
+    }
+
     return(
         
         <SafeAreaView style = {styles.container}>

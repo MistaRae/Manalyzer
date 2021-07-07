@@ -56,12 +56,13 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
                     oracleText: oracle_text,
                     power: power,
                     toughness: toughness,
-                    type: parseType(type_line.toLowerCase()),
+                    type: type_line,
+                    // type: parseType(type_line.toLowerCase()),
                     image_uris: image_uris,
                     price: prices.eur
                 });
             })
-            .catch(data => console.log(data))
+            .catch()
     };
 
 

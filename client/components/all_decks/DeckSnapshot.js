@@ -1,22 +1,44 @@
 import React, {useState, useEffect}from 'react';
 import { Alert, Pressable, StyleSheet, Text, View, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-
+import { useIsFocused } from '@react-navigation/native';
 
 const DeckSnapshot = ({deck, navigation: { navigate }}) => {
 
     const {cards} = deck;
     const cardCount = cards.length
+    const isFocused = useIsFocused()
 
+    const [faceCard, setFaceCard] = useState(null)
 
-    // const deckPrices = []
-    // const getFaceCard = () => {
-    // cards.forEach((card) => {
-    //         deckPrices.push(card.price)
-    //     })
-    // }
+    const getFaceCard = () => {
+    cards.sort(function(cardA,cardB){
+        const priceA = cardA.price;
+        const priceB = cardB.price;
+        if (priceA > priceB){
+            return -1
+        }
+        if (priceA < priceB){
+            return 1
+        }
+        return 0;
+    });
 
+    const mostExpensiveCard = cards[0]
+
+    setFaceCard(mostExpensiveCard)
+    }
+    
+    useEffect(()=>{
+        let mounted = true
+        if (mounted) {
+        getFaceCard()
+        }
+        return function cleanup(){
+            mounted = false
+        }
+    }, [isFocused])
+   
 
 
     return(
@@ -44,10 +66,17 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
                 <View
                 
                 >
+                    {faceCard ?
+                    <Image 
+                    style={styles.card}
+                    source = {{uri: faceCard.image_URI}} 
+                    />
+                    :
                     <Image 
                         style={styles.card}
                         source = {{uri: 'https://media.magic.wizards.com/image_legacy_migration/magic/images/mtgcom/fcpics/making/mr224_back.jpg'}} 
                         />
+                    }            
                 </View>
             </View>
             </Pressable>
@@ -86,6 +115,8 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
         width: 194,
         height: 275,
+        // width: 97,
+        // height: 137.5
     },
     snapshotContainer:{
         flexDirection: 'row'
