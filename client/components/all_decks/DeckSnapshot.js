@@ -26,7 +26,6 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
 
         const mostExpensiveCard = sortedCards[0]
         setFaceCard(mostExpensiveCard)
-        // return mostExpensiveCard
     }
 
     
@@ -39,14 +38,12 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
             mounted = false
         }
     }, [isFocused])
-   
-    // const faceCard = getFaceCard()
+
 
     return(
         
         <SafeAreaView style={styles.container}>
             <Pressable 
-            // style={styles.outline}
             onPress={() => {
                 const id = deck.id
                 navigate('SpecificDeck', {deck_id: id, deck});
@@ -95,16 +92,10 @@ const styles = StyleSheet.create({
       marginRight: 10,
     },
     h1: {
-        // flex: 1,
-        // alignItems: 'center',
-        // justifyContent: 'center',
         fontSize: 14,
         fontWeight: 'bold'
     },
     h2: {
-        // flex: 1,
-        // alignItems: 'center',
-        // justifyContent: 'flex-start',
         fontSize:14,
     },
     outline: {

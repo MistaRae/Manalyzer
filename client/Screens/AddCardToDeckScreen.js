@@ -1,6 +1,8 @@
 import React, {useState, useEffect}from 'react';
 import { Image, Alert, Text,TextInput, Button, View, SafeAreaView, StyleSheet, Pressable } from 'react-native';
 import Request from '../helpers/request';
+
+
 const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
 
     const [currentCard, setCurrentCard] = useState({});
@@ -12,7 +14,14 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
 
 
     useEffect(() => {
+        let mounted = true;
+        if(mounted){
         getCard()
+    }
+    return function cleanup(){
+        mounted = false
+    }
+
     },[searchString])
 
     const baseURL = "https://api.scryfall.com/cards/named?fuzzy=";
@@ -45,8 +54,7 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
             .then(res => res.json())
             .then(data => {
                 const { id, type_line, toughness, power, cmc, name, colors, oracle_text, image_uris, prices } = data;
-                // TODO Colors as array, decks as something
-                
+                                
                 setCurrentCard({
                     api_id: id,
                     decks: [],

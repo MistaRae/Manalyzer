@@ -72,18 +72,13 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         const request = new Request();
         request.delete(url, currentDeck)
         .then(navigate('AllDecks'))
-        // .catch(error => console.log(error))
     }
-
-   
-
 
     return (
 
         <SafeAreaView style = {styles.container}>
             <Text
-            style = {styles.deckName}
-            >
+            style = {styles.deckName}>
             DECK NAME: {currentDeck.name}
             </Text>
             <Text
@@ -91,44 +86,37 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
                 TOTAL CARDS: {cardCount}
             </Text>
             <View
-            style = {styles.deckListContainer}>
-          {newDeckList}
+                style = {styles.deckListContainer}>
+                    {newDeckList}
             </View>
-
             <View
-            style = {styles.buttonContainer}
-            >
+            style = {styles.buttonContainer}>
             <View
-            style = {styles.button}
-            >
-            <Button
-           style = {styles.button}
-           onPress = {() => {navigate("CardSearch", {deck_id: currentDeck.id})}}
-           title= "add cards to deck"
-           color = "black"
-           />
-           </View>
-           <View
-            style = {styles.button}
-            >
-            <Button
-           style = {styles.button}
-           onPress = {() => {navigate("CompositionChart", {deck_id: currentDeck.id, deckList: deckList})}}
-           title= "deck compostion"
-           color = "black"
-           />
-           </View>
-           <View
-            style = {styles.button}
-            >
-            <Button
-           style = {styles.button}
-           onPress = {deleteDeck}
-           title= "delete deck"
-           color = "black"
-           />
-           </View>
-        </View>
+            style = {styles.button}>
+                <Button
+                style = {styles.button}
+                onPress = {() => {navigate("CardSearch", {deck_id: currentDeck.id})}}
+                title= "add cards to deck"
+                color = "black"/>
+            </View>
+                <View
+                    style = {styles.button}
+                    >
+                    <Button
+                    style = {styles.button}
+                    onPress = {() => {navigate("CompositionChart", {deck_id: currentDeck.id, deckList: deckList})}}
+                    title= "deck compostion"
+                    color = "black"/>
+                </View>
+                <View
+                    style = {styles.button}>
+                    <Button
+                    style = {styles.button}
+                    onPress = {deleteDeck}
+                    title= "delete deck"
+                    color = "black"/>
+                </View>
+            </View>
         </SafeAreaView>
 
         )

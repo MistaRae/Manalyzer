@@ -52,6 +52,14 @@ public class DeckController {
         return new ResponseEntity<>(null,HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/decks/{id}/delete-card")
+    public ResponseEntity<Deck> deleteCardFromDeck(@RequestBody Card card, @PathVariable Long id){
+        Deck deck = deckRepository.findById(id).get();
+        deck.removeCard(card);
+        deckRepository.save(deck);
+        return new ResponseEntity<>(deck, HttpStatus.OK);
+    }
+
 
 
 }

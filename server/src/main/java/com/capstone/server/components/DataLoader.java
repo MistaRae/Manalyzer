@@ -40,12 +40,12 @@ public class DataLoader implements ApplicationRunner {
     
     @Override
     public void run(ApplicationArguments args) {
-        Deck deck1 = new Deck("full deck 1");
-        Deck deck2 = new Deck("full deck 2");
-        Deck deck3 = new Deck("partial deck 1");
-        Deck deck4 = new Deck("partial deck 2");
-        Deck deck5 = new Deck("empty deck 1");
-        Deck deck6 = new Deck("empty deck 2");
+        Deck deck1 = new Deck("AYARA REBIRTH");
+        Deck deck2 = new Deck("UGIN COMMANDER");
+        Deck deck3 = new Deck("VIVIEN AGGRO");
+        Deck deck4 = new Deck("TEZZERET ARTS");
+        Deck deck5 = new Deck("BLUE CONTROL");
+        Deck deck6 = new Deck("RED BURN");
         Card swamp = new Card("Swamp", "colorless", 0, "{T}, add 1 black mana", 0, 0, "LAND", "","https://c1.scryfall.com/file/scryfall-cards/border_crop/front/a/b/ab950987-d88c-4326-98f4-1b1195788921.jpg?1624535761", "0.00");
         deck1.addCard(swamp);
         deck1.addCard(swamp);
@@ -169,10 +169,6 @@ public class DataLoader implements ApplicationRunner {
         deck2.addCard(ritualOfSoot);
         deck2.addCard(ritualOfSoot);
         deck2.addCard(ritualOfSoot);
-        deck2.addCard(ayara);
-        deck2.addCard(ayara);
-        deck2.addCard(ayara);
-        deck2.addCard(ayara);
         deck2.addCard(lurrus);
         deck2.addCard(lurrus);
         deck2.addCard(lurrus);
@@ -193,6 +189,13 @@ public class DataLoader implements ApplicationRunner {
         deck2.addCard(witchsOven);
         deck2.addCard(witchsOven);
         deck2.addCard(witchsOven);
+        Card ugin = new Card("Ugin, the Spirit Dragon", "colorless", 3,"Whenever Ayara, First of Locthwain or another black creature enters the battlefield under your control, each opponent loses 1 life and you gain 1 life." +
+                "{T}, Sacrifice another black creature: Draw a card.", 2,3, "CREATURE", "","https://c1.scryfall.com/file/scryfall-cards/border_crop/front/9/c/9c017fa9-7021-417a-9c2e-3df409644fcf.jpg?1594734662", "16.49" );
+        cardRepository.save(ugin);
+        deck2.addCard(ugin);
+        deck2.addCard(ugin);
+        deck2.addCard(ugin);
+        deck2.addCard(ugin);
         deckRepository.save(deck2);
         deck3.addCard(swamp);
         deck3.addCard(swamp);
@@ -214,6 +217,13 @@ public class DataLoader implements ApplicationRunner {
         deck3.addCard(swamp);
         deck3.addCard(swamp);
         deck3.addCard(swamp);
+        Card vivien = new Card("Vivien, Monster's Advocate", "green", 3,"Whenever Ayara, First of Locthwain or another black creature enters the battlefield under your control, each opponent loses 1 life and you gain 1 life." +
+                "{T}, Sacrifice another black creature: Draw a card.", 2,3, "CREATURE", "","https://c1.scryfall.com/file/scryfall-cards/border_crop/front/5/0/504ebb84-7e7b-4119-a128-a9c183c5d9de.jpg?1600970284", "16.49" );
+        cardRepository.save(vivien);
+        deck3.addCard(vivien);
+        deck3.addCard(vivien);
+        deck3.addCard(vivien);
+        deck3.addCard(vivien);
         deckRepository.save(deck3);
         deck4.addCard(swamp);
         deck4.addCard(swamp);
@@ -235,8 +245,29 @@ public class DataLoader implements ApplicationRunner {
         deck4.addCard(swamp);
         deck4.addCard(swamp);
         deck4.addCard(swamp);
+        Card tezzeret = new Card("Tezzeret, Agent of Bolas", "blue/black", 3,"Whenever Ayara, First of Locthwain or another black creature enters the battlefield under your control, each opponent loses 1 life and you gain 1 life." +
+                "{T}, Sacrifice another black creature: Draw a card.", 2,3, "CREATURE", "","https://c1.scryfall.com/file/scryfall-cards/border_crop/front/0/f/0f3c8470-1cc8-4383-8782-c022867d46e8.jpg?1562609629", "16.49" );
+        cardRepository.save(tezzeret);
+        deck4.addCard(tezzeret);
+        deck4.addCard(tezzeret);
+        deck4.addCard(tezzeret);
+        deck4.addCard(tezzeret);
         deckRepository.save(deck4);
+        Card jace = new Card("Jace, the Mind Sculptor", "blue", 3,"Whenever Ayara, First of Locthwain or another black creature enters the battlefield under your control, each opponent loses 1 life and you gain 1 life." +
+                "{T}, Sacrifice another black creature: Draw a card.", 2,3, "CREATURE", "","https://c1.scryfall.com/file/scryfall-cards/border_crop/front/c/8/c8817585-0d32-4d56-9142-0d29512e86a9.jpg?1598304029", "16.49" );
+        cardRepository.save(jace);
+        deck5.addCard(jace);
+        deck5.addCard(jace);
+        deck5.addCard(jace);
+        deck5.addCard(jace);
         deckRepository.save(deck5);
+        Card chandra = new Card("Chandra, Heart of Fire", "red", 3,"Whenever Ayara, First of Locthwain or another black creature enters the battlefield under your control, each opponent loses 1 life and you gain 1 life." +
+                "{T}, Sacrifice another black creature: Draw a card.", 2,3, "CREATURE", "","https://c1.scryfall.com/file/scryfall-cards/border_crop/front/a/4/a4c3ca8c-c77c-43b8-84ad-796313ecc813.jpg?1594752360", "16.49" );
+        cardRepository.save(chandra);
+        deck6.addCard(chandra);
+        deck6.addCard(chandra);
+        deck6.addCard(chandra);
+        deck6.addCard(chandra);
         deckRepository.save(deck6);
 
 

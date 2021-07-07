@@ -31,7 +31,7 @@ const LogIn = ({ navigation: { navigate } }) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: 20,
+        marginLeft: 0,
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',

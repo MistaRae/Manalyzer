@@ -19,7 +19,7 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
 
     const getChartData = () => {
         const reducedList = deckList.reduce((accumulator, currentCard) => {
-            const found = accumulator.find(card => card.type == currentCard.type) // <<-- count by card type(instant,sorcery,creature)
+            const found = accumulator.find(card => card.type == currentCard.type) 
             if (found) {found.quantity += 1}
             else {accumulator.push({...currentCard, quantity: 1})}
             return accumulator 
@@ -94,23 +94,14 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             return newData;
         }
         
-
-
-        const barData = {
-            labels: getBarLabels(),
-            datasets: [
-              {
+            const barData = {
+                labels: getBarLabels(),
+                datasets: [
+                    {
                 data: getBarData()
               },
             ],
           };
-
-          
-
-
-
-
-
 
         return (
             <SafeAreaView>
@@ -122,9 +113,7 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
                     // xAxisLabel={""}
                     chartConfig={barChartConfig}/>
             </SafeAreaView>
-    
         )
-    
     }
 
 
@@ -139,7 +128,6 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
 
         deckList.forEach((card) => totalCost += card.cost)
           
-
           deckList.forEach((card) => {
             if(card.type == 'LAND'){
                 totalLand += 1 
@@ -161,15 +149,13 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             return totalInstants
         })
 
-        deckList.forEach((card) => {
-          if(card.type == 'SORCERY'){
+          deckList.forEach((card) => {
+            if(card.type == 'SORCERY'){
               totalSorceries += 1 
-          }
-          return totalSorceries
+            }
+            return totalSorceries
       })
 
-
-        
         let playables = cardCount - totalLand 
         let averageCost = totalCost / playables
 
@@ -180,37 +166,28 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             if(cardCount / totalLand > 0.3) {
                 rating += 1
             }
-
             if(averageCost > 2.0 && averageCost < 3.3) {
                 rating += 1
             }
-
             if(cardCount / totalCreatures > 0.2 && cardCount / totalCreatures < 0.4){
                 rating += 1.5
             }
-
             if(totalInstants > totalSorceries) {
                 rating += 0.5
             }
-
         }
         
         getRating()
 
         return(
             <SafeAreaView>
-
             {/* <Text>{rating > 0 && rating < 1} &#11240; </Text> */}
             <Text
             style = {styles.ratings}
             >RATING: {rating}/5</Text>
             </SafeAreaView>
         )
-
     }
-
-
-   
 
     return (
         <SafeAreaView
@@ -253,7 +230,6 @@ const barChartConfig = {
     borderRadius: 16
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {

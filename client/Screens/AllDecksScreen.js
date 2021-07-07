@@ -10,8 +10,6 @@ const AllDecksScreen = ({navigation}) => {
     const [decks, setDecks] = useState([]);
     const isFocused = useIsFocused()
 
-  
-
     const baseURL = 'http://192.168.1.166:8080/decks';
 
     const getDecks = () => {
@@ -32,9 +30,6 @@ const AllDecksScreen = ({navigation}) => {
     },[[isFocused]])
 
     const deckNodes = decks.map((deck) => {
-
-        // console.log(deck)
-
         return ( 
             <DeckSnapshot key ={deck.id} deck={deck} navigation={navigation} />
         )
@@ -45,18 +40,18 @@ const AllDecksScreen = ({navigation}) => {
             <ActivityIndicator
             style = {styles.activityIndicator}
             size = 'large'
-            color = 'darkgrey'
-            />
+            color = 'darkgrey'/>
         )
     }
 
     return(
         
-        <SafeAreaView style = {styles.container}>
-            <MenuBar navigation = {navigation}/>
-            <ScrollView>
-          {deckNodes}
-          </ScrollView>
+        <SafeAreaView 
+            style = {styles.container}>
+                <MenuBar navigation = {navigation}/>
+                <ScrollView>
+                    {deckNodes}
+                </ScrollView>
         </SafeAreaView>
     )
 
