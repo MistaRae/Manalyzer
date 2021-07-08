@@ -8,7 +8,7 @@ const MenuBar = ({ navigation: { navigate } }) => {
         <SafeAreaView style = {styles.container}>
             <Button style = {styles.button}
             onPress={() => navigate('Home')}
-            title = "home"
+            title = "sign out"
             color="black"/>
             <Button style = {styles.button}
             onPress={() => navigate('AllDecks')}

@@ -130,7 +130,8 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
                 <View>
             <Text
             style = {styles.deckName}>
-            DECK NAME: {currentDeck.name}
+            DECK NAME: {"\n"}
+            {currentDeck.name}
             </Text>
             <Text
             style = {styles.deckName}>
@@ -202,7 +203,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,    
     },
     deckName: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 30
     }, 
     deckList: {
         flex:1,
