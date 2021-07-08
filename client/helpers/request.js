@@ -12,6 +12,14 @@ class Request {
       })
     }
 
+    deleteCard(url, payload) {
+      return fetch(url, {
+        method: "DELETE",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      }).then((res) => res.json())
+    }
+
     post(url, payload){
       return fetch(url, {
         method: "POST",

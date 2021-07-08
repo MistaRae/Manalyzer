@@ -93,7 +93,6 @@ const CompositionChart = ({route, navigation : {navigate}}) => {
             const newData = sortedList.map((card) => card.cost)
             return newData;
         }
-        
             const barData = {
                 labels: getBarLabels(),
                 datasets: [

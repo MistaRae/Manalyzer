@@ -53,7 +53,8 @@ const AddCardToDeckScreen = ({route, navigation: { navigate }}) => {
         return fetch(baseURL + searchString)
             .then(res => res.json())
             .then(data => {
-                const { id, type_line, toughness, power, cmc, name, colors, oracle_text, image_uris, prices } = data;
+                const { id, type_line, toughness, power, cmc, name,
+                     colors, oracle_text, image_uris, prices } = data;
                                 
                 setCurrentCard({
                     api_id: id,

@@ -28,7 +28,6 @@ const DeckSnapshot = ({deck, navigation: { navigate }}) => {
         setFaceCard(mostExpensiveCard)
     }
 
-    
     useEffect(()=>{
         let mounted = true
         if (mounted) {

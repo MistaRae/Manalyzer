@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react';
-import { SafeAreaView, Image, StyleSheet, Text, View, FlatList, Pressable, Button, ActivityIndicator } from 'react-native';
+import { SafeAreaView, Image, StyleSheet, Text, View, ScrollView, FlatList, Pressable, Button, ActivityIndicator } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
 import { useIsFocused } from '@react-navigation/native';
 import Request from '../helpers/request';
@@ -30,12 +30,24 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         if (mounted) {
         getCurrentDeck()  
     }
-        
         return function cleanup(){
             mounted = false
         }
-        
-    },[isFocused])
+    },[isFocused, currentDeck])
+
+
+    const addCardToDeck = (card) => {
+        const url = "http://192.168.1.166:8080/decks/" + deck_id + "/add-card"
+        const request = new Request();
+        request.post(url, card)
+       
+    }
+
+    const deleteCard = (card) =>{
+        const url = "http://192.168.1.166:8080/decks/" + deck_id + "/delete-card"
+        const request = new Request();
+        request.deleteCard(url, card)
+        }
 
     if (!currentDeck) {return (
         <ActivityIndicator
@@ -54,18 +66,54 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
         },[])
         const newDeckList = reducedList.map(card => {
         return (
-            <Pressable key={card.id}
-            onPress = {() => {}}>
-            <Text
-            style={styles.deckList}
-            > {card.name} x {card.quantity}</Text>
-            </Pressable>
+            <SafeAreaView
+            key={card.id}
+            // style={styles.container}
+            >
+                <View
+                style = {styles.nodeContainer}
+                >
+                <Text
+                style={styles.deckList}
+                > {card.name} x {card.quantity}
+                </Text>
+                <View
+                style={styles.quantityButtonContainer}
+                >
+                    <View
+                    style={styles.rowContainer}>
+                    <View
+                    style={styles.qtyButtonContainer}
+                    >
+                        <Button 
+                        style={styles.qtyButton}
+                        title="+"
+                        color = "black"
+                        onPress={()=>{addCardToDeck(card)}}
+                        />
+                    </View>
+                    <View
+                    style={styles.qtyButtonContainer}
+                    >
+                        <Button 
+                        style={styles.qtyButton}
+                        title="--"
+                        color = "black"
+                        onPress = {()=>{deleteCard(card)}}
+                        />
+                    </View>
+                    </View>
+                </View>
+                </View>
+            </SafeAreaView>
         )
     }
     )
 
     const {cards} = currentDeck
     const cardCount = cards.length
+
+    
 
     const deleteDeck = () => {
         const url = "http://192.168.1.166:8080/decks/" + deck_id
@@ -77,6 +125,9 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
     return (
 
         <SafeAreaView style = {styles.container}>
+            <ScrollView
+            style={styles.scrollView}>
+                <View>
             <Text
             style = {styles.deckName}>
             DECK NAME: {currentDeck.name}
@@ -86,7 +137,8 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
                 TOTAL CARDS: {cardCount}
             </Text>
             <View
-                style = {styles.deckListContainer}>
+                // style = {styles.deckListContainer}
+                >
                     {newDeckList}
             </View>
             <View
@@ -96,7 +148,7 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
                 <Button
                 style = {styles.button}
                 onPress = {() => {navigate("CardSearch", {deck_id: currentDeck.id})}}
-                title= "add cards to deck"
+                title= "Search for cards"
                 color = "black"/>
             </View>
                 <View
@@ -117,6 +169,8 @@ const DeckScreen = ({route, navigation: {navigate}}) => {
                     color = "black"/>
                 </View>
             </View>
+            </View>
+            </ScrollView>
         </SafeAreaView>
 
         )
@@ -138,6 +192,9 @@ const styles = StyleSheet.create({
         // width: 388,
         // height: 550,
     },
+    rowContainer:{
+        flexDirection: 'row',
+    },
     button: {
         // flex: 1,
         margin: 10,
@@ -148,7 +205,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }, 
     deckList: {
-        paddingLeft: 10
+        flex:1,
+        paddingLeft: 0, 
+        fontSize:20,
     }, 
     deckListContainer: {
         margin: 10
@@ -161,6 +220,27 @@ const styles = StyleSheet.create({
         alignContent: "center",
         justifyContent: "center",
         alignItems: "center"
+    }, 
+    qtyButton:{
+        // flex: 1,
+        width: 30,
+        flexDirection: 'row',
+        margin: 5,
+    },
+    scrollView: {
+
+    },
+    qtyButtonContainer:{
+        margin: 5, 
+        flexDirection: "row"
+    }, 
+    nodeContainer:{
+        flexDirection: "row", 
+        alignItems: "center",
+        justifyContent: "flex-end"
+    }, 
+    quantityButtonContainer: {
+        flexDirection: "row"
     }
 })
 

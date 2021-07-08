@@ -23,7 +23,6 @@ const AllDecksScreen = ({navigation}) => {
         if (mounted) {
             getDecks()  
         }
-            
             return function cleanup(){
                 mounted = false
             }

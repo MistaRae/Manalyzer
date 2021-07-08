@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { AppLoading } from 'expo-app-loading';
-import { StyleSheet, Text, View, LogBox } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native"
+import { LogBox } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from './Screens/HomeScreen';
 import DeckScreen from './Screens/DeckScreen';
 import AllDecksScreen from './Screens/AllDecksScreen'
