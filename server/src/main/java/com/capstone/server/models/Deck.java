@@ -7,6 +7,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "Deck")
@@ -70,8 +71,7 @@ public class Deck {
     }
 
     public void removeCard(Card card) {
-        this.cards.remove(card);
+        Optional<Card> cardToRemove = this.cards.stream().filter((cardToCheck -> cardToCheck.getId().equals(card.getId()))).findFirst();
+        cardToRemove.ifPresent(value -> this.cards.remove(value));
     }
-
-
 }
