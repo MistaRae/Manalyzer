@@ -1,7 +1,7 @@
 # SkullTap is a deck building utility app for magic the gathering. 
 Its purpose is to allow newcomers and experienced players alike to experiment with different deck variations and rapidly evaluate viability for competitive or social play. 
 
-# installing the app. 
+# Installing the app. 
 
 - [`Fork`](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) & [`Clone`](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository) the repo as normal. 
 
