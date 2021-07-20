@@ -1,5 +1,5 @@
 # SkullTap is a deck building utility app for magic the gathering. 
-# Its purpose is to allow newcomers and experienced players alike to experiment with different deck variations and rapidly evaluate viability for competitive or social play. 
+Its purpose is to allow newcomers and experienced players alike to experiment with different deck variations and rapidly evaluate viability for competitive or social play. 
 
 #installing the app 
 
