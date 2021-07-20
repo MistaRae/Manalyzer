@@ -19,7 +19,7 @@ Its purpose is to allow newcomers and experienced players alike to experiment wi
   5. You can change certain settings on the next page, the app was developed on a pixel 4 XL emulator running R ar API level 30.
   6. Click on the green play button in the AVD manager to launch your emulator. 
 
-- run the backend server: 
+- Run the backend server: 
   1. [Download and run IntelliJ -the community version is available for free](https://www.jetbrains.com/help/idea/installation-guide.html#toolbox).
   2. Open the server directory as a project in intelliJ (file path ~/{yourfilepath}/SkullTap/server) and run the server app by pressing the green play button.
   (to ensure ensure that you are not running the tests, they have been commented out)
