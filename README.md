@@ -28,12 +28,12 @@ Its purpose is to allow newcomers and experienced players alike to experiment wi
 
 - Fetch commands in the client will need to have your IP address added to replace my own:
 
-`const addCardToDeck = () => {
+```const addCardToDeck = () => {
         const url = "http://{YOUR IP ADDRESSS GOES HERE}:8080/decks/" + deck_id + "/add-card"
         const request = new Request();
         request.post(url, currentCard)
         .then(data => navigate('SpecificDeck', {deck_id: data.id}))
-    }`
+    }```
 
 (There are 5 such fetches in the client app, one each in `NewDeckForm` & `AddCardToDeckScreen` then three in `DeckScreen`).
 
